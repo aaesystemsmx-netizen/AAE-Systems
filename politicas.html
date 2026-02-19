@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AAE Systems - Automatización Inteligente</title>
+    <meta name="description"
+        content="AAE Systems - Agencia especializada en automatización de procesos, integración de sistemas y soluciones de IA para tu negocio.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo-text">
+                    <span class="logo-main">AAE</span>
+                    <span class="logo-sub">Systems</span>
+                    <div class="logo-decoration"><span>❖</span></div>
+                </a>
+            </div>
+            <div class="menu-container">
+                <button class="hamburger-btn" id="menuToggle" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="dropdown-menu" id="dropdownMenu">
+                    <a href="index.html" class="menu-link">Página Principal</a>
+                    <a href="about.html" class="menu-link">Acerca de</a>
+                    <a href="planes.html" class="menu-link">Planes</a>
+                    <a href="beneficios.html" class="menu-link">Beneficios</a>
+                    <a href="politicas.html" class="menu-link">Políticas</a>
+                    <a href="contacto.html" class="menu-link">Contacto</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- PAGE HEADER -->
+        <section class="hero-section" style="min-height: 40vh;">
+            <div class="hero-card container">
+                <div class="hero-bg"></div>
+                <div class="hero-content">
+                    <span class="badge">SEGURIDAD</span>
+                    <h1 class="hero-title">Políticas y Garantías</h1>
+                    <div class="divider"></div>
+                    <p class="hero-subtitle">Tu tranquilidad y la seguridad de tus datos son nuestra prioridad.</p>
+                    <a href="aae_policies.pdf" download class="btn-primary"
+                        style="margin-top: 1rem; display: inline-block; background-color: var(--primary); color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: 600;">Descargar
+                        PDF 📄</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- POLICIES SECTION -->
+        <section class="policies-section container" id="policies">
+
+            <div class="policies-content" style="display: block; max-width: 800px; margin: 0 auto;">
+
+                <div class="policy-item" style="margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem;">1. Alcance de los Servicios</h3>
+
+                    <h4 style="margin-bottom: 0.5rem; color: #444;">🛠️ Automatizaciones e Integraciones</h4>
+                    <p>AAE Systems diseña flujos de trabajo automatizados para optimizar procesos empresariales.</p>
+                    <ul style="margin-left: 20px; list-style-type: disc;">
+                        <li><strong>Entregables:</strong> El servicio se considera "entregado" cuando el flujo ejecuta
+                            correctamente la lógica aprobada.</li>
+                        <li><strong>Plataformas de Terceros:</strong> Integramos herramientas externas (CRM, Email,
+                            APIs). No somos responsables por cambios en sus APIs o caídas de servicio ajenas a nuestro
+                            control.</li>
+                    </ul>
+
+                    <h4 style="margin-top: 1rem; margin-bottom: 0.5rem; color: #444;">🤖 Chatbots y Asistentes IA</h4>
+                    <p>El bot responde según los flujos aprobados. La disponibilidad depende de la plataforma de
+                        mensajería (WhatsApp, Telegram).</p>
+                </div>
+
+                <div class="policy-item" style="margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem;">2. Soporte y Mantenimiento</h3>
+                    <h4 style="margin-bottom: 0.5rem; color: #444;">🔄 Póliza de Mantenimiento Mensual</h4>
+                    <ul style="margin-left: 20px; list-style-type: disc;">
+                        <li><strong>Incluye:</strong> Hosting en VPS, monitoreo proactivo, actualización de
+                            credenciales, corrección de bugs lógicos y hasta 5 ajustes menores mensuales.</li>
+                        <li><strong>NO Incluye:</strong> Desarrollo de nuevas funcionalidades o reconfiguración por
+                            cambio de software del cliente.</li>
+                    </ul>
+                    <p style="margin-top: 10px;"><strong>Horario:</strong> Lunes a Viernes 9:00 AM - 5:00 PM.</p>
+                </div>
+
+                <div class="policy-item" style="margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem;">3. Costos y Servicios de Terceros</h3>
+                    <p><strong>Licencias SaaS:</strong> El Cliente es responsable de pagar sus suscripciones de software
+                        (OpenAI, UltraMSG, Make, etc.).</p>
+                    <p><strong>Interrupciones:</strong> Fallos por falta de saldo o vencimiento de licencias pueden
+                        generar costos de reactivación.</p>
+                </div>
+
+                <div class="policy-item" style="margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem;">4. Pagos y Propiedad</h3>
+                    <ul style="margin-left: 20px; list-style-type: disc;">
+                        <li><strong>Proyectos:</strong> 50% anticipo, 50% contra entrega.</li>
+                        <li><strong>Suspensión:</strong> El servicio se suspende tras 5 días de impago.</li>
+                        <li><strong>Propiedad Intelectual:</strong> El cliente conserva sus datos. El código fuente
+                            permanece como propiedad de AAE Systems (licencia de uso), salvo acuerdo de "Buyout".</li>
+                    </ul>
+                </div>
+
+                <div class="policy-item" style="margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem;">5. Privacidad</h3>
+                    <p>AAE Systems actúa como "Encargado del Tratamiento". No vendemos ni compartimos tus datos ni los
+                        de tus clientes.</p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="index.html" class="logo-text logo-white">
+                    <span class="logo-main">AAE</span>
+                    <span class="logo-sub">Systems</span>
+                    <div class="logo-decoration"><span>❖</span></div>
+                </a>
+            </div>
+            <p class="footer-slogan">AUTOMATIZACIÓN INTELIGENTE PARA TU NEGOCIO</p>
+
+            <div class="footer-links">
+                <a href="index.html">Página Principal</a>
+                <a href="about.html">Acerca de</a>
+                <a href="planes.html">Planes</a>
+                <a href="beneficios.html">Beneficios</a>
+                <a href="politicas.html">Políticas</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+
+            <div class="footer-social">
+                <a href="#" aria-label="WhatsApp"><i class="ri-whatsapp-fill"></i></a>
+                <a href="#" aria-label="Facebook"><i class="ri-facebook-fill"></i></a>
+                <a href="#" aria-label="Instagram"><i class="ri-instagram-fill"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
+            </div>
+
+            <p class="copyright">© 2026 AAE Systems. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js?v=1.1"></script>
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AAE Systems - Automatización Inteligente</title>
+    <meta name="description"
+        content="AAE Systems - Agencia especializada en automatización de procesos, integración de sistemas y soluciones de IA para tu negocio.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo-text">
+                    <span class="logo-main">AAE</span>
+                    <span class="logo-sub">Systems</span>
+                    <div class="logo-decoration"><span>❖</span></div>
+                </a>
+            </div>
+            <div class="menu-container">
+                <button class="hamburger-btn" id="menuToggle" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="dropdown-menu" id="dropdownMenu">
+                    <a href="index.html" class="menu-link">Página Principal</a>
+                    <a href="about.html" class="menu-link">Acerca de</a>
+                    <a href="planes.html" class="menu-link">Planes</a>
+                    <a href="beneficios.html" class="menu-link">Beneficios</a>
+                    <a href="politicas.html" class="menu-link">Políticas</a>
+                    <a href="contacto.html" class="menu-link">Contacto</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- PAGE HEADER -->
+        <section class="hero-section" style="min-height: 40vh;">
+            <div class="hero-card container">
+                <div class="hero-bg"></div>
+                <div class="hero-content">
+                    <span class="badge">SOPORTE</span>
+                    <h1 class="hero-title">Contáctanos</h1>
+                    <div class="divider"></div>
+                    <p class="hero-subtitle">Estamos listos para escuchar sobre tu proyecto.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacto -->
+        <section class="contact-section" style="padding-top: 0;">
+            <div class="contact-content">
+                <h3>¿Listo para automatizar tu negocio?</h3>
+                <p>Agenda una consulta gratuita y descubre cómo podemos optimizar tus procesos</p>
+                <form class="contact-form" id="contactForm">
+                    <input type="text" id="name" placeholder="Nombre completo" required>
+                    <input type="email" id="email" placeholder="Correo electrónico" required>
+                    <input type="tel" id="phone" placeholder="Teléfono (opcional)">
+                    <textarea id="message" placeholder="Cuéntanos sobre tu proyecto" rows="4" required></textarea>
+                    <button type="submit" id="submitBtn">Enviar Consulta</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="index.html" class="logo-text logo-white">
+                    <span class="logo-main">AAE</span>
+                    <span class="logo-sub">Systems</span>
+                    <div class="logo-decoration"><span>❖</span></div>
+                </a>
+            </div>
+            <p class="footer-slogan">AUTOMATIZACIÓN INTELIGENTE PARA TU NEGOCIO</p>
+
+            <div class="footer-links">
+                <a href="index.html">Página Principal</a>
+                <a href="about.html">Acerca de</a>
+                <a href="planes.html">Planes</a>
+                <a href="beneficios.html">Beneficios</a>
+                <a href="politicas.html">Políticas</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+
+            <div class="footer-social">
+                <a href="#" aria-label="WhatsApp"><i class="ri-whatsapp-fill"></i></a>
+                <a href="#" aria-label="Facebook"><i class="ri-facebook-fill"></i></a>
+                <a href="#" aria-label="Instagram"><i class="ri-instagram-fill"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
+            </div>
+
+            <p class="copyright">© 2026 AAE Systems. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js?v=1.1"></script>
+</body>
+
+</html>

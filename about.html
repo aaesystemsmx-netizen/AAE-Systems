@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acerca de Nosotros - AAE Systems</title>
+    <meta name="description"
+        content="Conoce AAE Systems, la agencia líder en automatización inteligente que está redefiniendo el futuro de los negocios B2B.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos específicos para la página About Expandida */
+        .story-section {
+            padding: 80px 0;
+            background-color: var(--color-white);
+        }
+
+        .story-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .story-title {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--color-black);
+        }
+
+        .story-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--color-gray-dark);
+            line-height: 1.8;
+        }
+
+        .quote-block {
+            border-left: 4px solid var(--color-black);
+            padding-left: 30px;
+            margin: 40px 0;
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--color-dark);
+        }
+
+        /* Nuevas Secciones */
+        .methodology-results {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin: 6rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .methodology-results {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .placeholder-img {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 100%);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.2);
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .placeholder-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            padding: 2rem;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-black);
+        }
+
+        .value-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .founder-section {
+            background-color: #f9f9f9;
+            padding: 5rem 0;
+            margin-top: 5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo-text">
+                    <span class="logo-main">AAE</span>
+                    <span class="logo-sub">Systems</span>
+                    <div class="logo-decoration"><span>❖</span></div>
+                </a>
+            </div>
+            <div class="menu-container">
+                <button class="hamburger-btn" id="menuToggle" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="dropdown-menu" id="dropdownMenu">
+                    <a href="index.html" class="menu-link">Página Principal</a>
+                    <a href="about.html" class="menu-link">Acerca de</a>
+                    <a href="planes.html" class="menu-link">Planes</a>
+                    <a href="beneficios.html" class="menu-link">Beneficios</a>
+                    <a href="politicas.html" class="menu-link">Políticas</a>
+                    <a href="contacto.html" class="menu-link">Contacto</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- PAGE HEADER -->
+        <section class="hero-section" style="min-height: 50vh;">
+            <div class="hero-card container">
+                <div class="hero-bg"></div>
+                <div class="hero-content">
+                    <span class="badge">NUESTRA HISTORIA</span>
+                    <h1 class="hero-title">Más que Código,<br>Creamos Tiempo</h1>
+                    <div class="divider"></div>
+                    <p class="hero-subtitle">La filosofía detrás de la automatización invisible.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STORY SECTION -->
+        <section class="story-section container">
+            <div class="story-content">
+                <h2 class="story-title">El Origen</h2>
+                <div class="story-text">
+                    <p>En un mundo saturado de tareas repetitivas y procesos ineficientes, AAE Systems nació con una
+                        misión clara: devolverle a los empresarios su activo más valioso, el tiempo.</p>
+
+                    <p>No somos solo una agencia de desarrollo; somos arquitectos de eficiencia. Observamos cómo grandes
+                        ideas se estancan en la ejecución operativa diaria, y decidimos construir el puente tecnológico
+                        que elimina esa fricción.</p>
+                </div>
+
+                <!-- Methodology / Visual Break -->
+                <div class="methodology-results">
+                    <div class="story-text">
+                        <h2 class="story-title" style="font-size: 2rem;">Ingeniería Invisible</h2>
+                        <p>Creemos que el mejor sistema es el que no se nota. Cuando la tecnología funciona
+                            correctamente,
+                            desaparece del primer plano, permitiéndote enfocarte en la estrategia.</p>
+                        <p>Nuestra metodología no se basa en parches temporales, sino en la construcción de ecosistemas
+                            digitales robustos que operan silenciosamente en el "backend" de tu negocio.</p>
+                    </div>
+                    <img src="img/aae_ai_face.png" alt="Ingeniería Invisible - Ecosistema Digital"
+                        style="width: 100%; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+                </div>
+
+                <div class="quote-block">
+                    "La verdadera inteligencia artificial no reemplaza al humano, lo eleva para que pueda dedicarse
+                    a lo que realmente importa: crear y liderar."
+                </div>
+
+                <!-- CORE VALUES -->
+                <div style="margin: 5rem 0;">
+                    <h2 class="story-title" style="text-align: center;">Nuestros Valores Nucleares</h2>
+                    <div class="values-grid">
+                        <div class="value-card">
+                            <span class="value-icon">⚡</span>
+                            <h3 style="margin-bottom: 0.5rem; font-family: var(--font-serif);">Precisión Absoluta</h3>
+                            <p style="font-size: 0.9rem; color: #666;">El error humano es costoso. Nuestro código está
+                                diseñado para ejecutar con exactitud milimétrica, siempre.</p>
+                        </div>
+                        <div class="value-card">
+                            <span class="value-icon">👁️</span>
+                            <h3 style="margin-bottom: 0.5rem; font-family: var(--font-serif);">Transparencia</h3>
+                            <p style="font-size: 0.9rem; color: #666;">Sin cajas negras. Construimos sistemas que puedes
+                                auditar, entender y, sobre todo, controlar.</p>
+                        </div>
+                        <div class="value-card">
+                            <span class="value-icon">🎨</span>
+                            <h3 style="margin-bottom: 0.5rem; font-family: var(--font-serif);">Estética Funcional</h3>
+                            <p style="font-size: 0.9rem; color: #666;">La belleza no está peleada con la utilidad.
+                                Nuestras interfaces son limpias, intuitivas y elegantes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOUNDER SECTION -->
+        <section class="founder-section">
+            <div class="container" style="max-width: 800px;">
+                <h2 class="story-title">El Fundador</h2>
+                <div class="story-text">
+                    <p>Aaron Ayala fundó AAE Systems después de identificar un patrón recurrente en la industria:
+                        empresas brillantes con operativas mediocres.</p>
+
+                    <p>Con un trasfondo en ingeniería y una pasión por el diseño de sistemas complejos, Aaron se dio
+                        cuenta de que la mayoría de los negocios no necesitaban "más software", necesitaban
+                        <strong>mejores flujos de trabajo</strong>.
+                    </p>
+
+                    <p>"Mi objetivo no es solo automatizar una tarea; es rediseñar la forma en que tu empresa respira.
+                        Quiero que cada notificación que recibas sea una venta cerrada o un problema resuelto, no una
+                        distracción."</p>
+
+                    <div style="margin-top: 60px; padding-top: 30px; display: inline-block;">
+                        <p
+                            style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 2.5rem; color: #1a1a1a; margin-bottom: 0.5rem; line-height: 1;">
+                            Aaron Ayala</p>
+                        <p
+                            style="font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #666; margin-top: 10px; border-top: 1px solid #ddd; padding-top: 10px; display: inline-block;">
+                            CEO, AAE Systems</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="index.html" class="logo-text logo-white">
+                    <span class="logo-main text-white">AAE</span>
+                    <span class="logo-sub text-white">Systems</span>
+                    <div class="logo-decoration text-white"><span>❖</span></div>
+                </a>
+            </div>
+            <p class="footer-slogan">AUTOMATIZACIÓN INTELIGENTE PARA TU NEGOCIO</p>
+
+            <div class="footer-links">
+                <a href="index.html">Página Principal</a>
+                <a href="about.html">Acerca de</a>
+                <a href="planes.html">Planes</a>
+                <a href="beneficios.html">Beneficios</a>
+                <a href="politicas.html">Políticas</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+
+            <div class="footer-social">
+                <a href="#" aria-label="WhatsApp"><i class="ri-whatsapp-fill"></i></a>
+                <a href="#" aria-label="Facebook"><i class="ri-facebook-fill"></i></a>
+                <a href="#" aria-label="Instagram"><i class="ri-instagram-fill"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
+            </div>
+
+            <p class="copyright">© 2026 AAE Systems. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js?v=1.1"></script>
+</body>
+
+</html>
