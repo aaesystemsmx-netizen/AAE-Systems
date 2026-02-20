@@ -53,57 +53,119 @@
     </header>
 
     <main class="container">
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <div class="hero-card">
+
+        <!-- HERO SECTION -->
+        <section id="home" class="hero-section">
+            <div class="hero-card container">
                 <div class="hero-bg"></div>
                 <div class="hero-content">
-                    <span class="badge">NUEVO</span>
-                    <h1 class="hero-title">Automatización<br>Inteligente</h1>
+                    <span class="badge">AUTOMATIZACIÓN B2B</span>
+                    <h1 class="hero-title">Transforma tu Negocio con<br>Inteligencia Artificial</h1>
                     <div class="divider"></div>
-                    <p class="hero-subtitle">Optimizamos tus procesos de negocio con soluciones de IA y automatización a
-                        medida.</p>
+                    <p class="hero-subtitle">Optimizamos procesos, reducimos costos y escalamos tus operaciones con
+                        soluciones de automatización a medida.</p>
                     <div class="hero-actions">
-                        <a href="contacto.html" class="btn-primary">Empezar Ahora</a>
-                        <a href="planes.html" class="btn-secondary">Ver Planes</a>
+                        <a href="planes.html" class="btn-primary"
+                            style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">
+                            Comenzar Ahora
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                        <a href="beneficios.html" class="btn-secondary"
+                            style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">Ver
+                            Casos de Uso</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Features Grid -->
-        <section class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon"><i class="ri-rocket-line"></i></div>
-                <h3>Optimización</h3>
-                <p>Mejoramos la eficiencia operativa de tu empresa mediante flujos de trabajo automatizados.</p>
+        </section>
+
+        <!-- ABOUT TEASER (Instagram Post Style) -->
+        <section class="about-teaser-section container">
+            <a href="about.html" class="teaser-card">
+                <div class="teaser-image">
+                    <span class="teaser-icon">❖</span>
+                </div>
+                <div class="teaser-content">
+                    <span class="teaser-label">Nuestra Misión</span>
+                    <h3>Ingeniería Invisible</h3>
+                    <div class="teaser-link-text">Leer más →</div>
+                </div>
+            </a>
+        </section>
+
+        <!-- SERVICES SECTION -->
+        <section id="services" class="services-section container">
+            <div class="section-header">
+                <h2>Nuestras Soluciones</h2>
+                <a href="planes.html" class="link-view-all">Ver todos los servicios →</a>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="ri-brain-line"></i></div>
-                <h3>Inteligencia Artificial</h3>
-                <p>Implementamos soluciones de IA para análisis de datos y toma de decisiones.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="ri-code-s-slash-line"></i></div>
-                <h3>Integración</h3>
-                <p>Conectamos tus herramientas favoritas para crear un ecosistema digital unificado.</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="card-overlay"></div>
+                    <div class="card-icon">🤖</div>
+                    <h3 class="card-title">Chatbots IA</h3>
+                    <p class="card-description">Asistentes virtuales 24/7 que califican leads, agendan citas y resuelven
+                        dudas automáticamente.</p>
+                </div>
+                <div class="service-card">
+                    <div class="card-overlay"></div>
+                    <div class="card-icon">⚡</div>
+                    <h3 class="card-title">Automatización de Flujos</h3>
+                    <p class="card-description">Conectamos tus apps (CRM, Email, Slack) para eliminar tareas repetitivas
+                        y errores humanos.</p>
+                </div>
+                <div class="service-card">
+                    <div class="card-overlay"></div>
+                    <div class="card-icon">📊</div>
+                    <h3 class="card-title">Análisis de Datos</h3>
+                    <p class="card-description">Dashboards inteligentes que convierten datos brutos en decisiones
+                        estratégicas para tu empresa.</p>
+                </div>
             </div>
         </section>
 
-        <section class="contact-section">
+        <!-- PLANS & POLICIES REMOVED (Moved to separate pages) -->
+
+        <!-- STATS SECTION -->
+        <section id="stats" class="stats-section">
+            <div class="stats-content container">
+                <h3>Resultados Comprobados</h3>
+                <p>Nuestros clientes han transformado sus operaciones con AAE Systems.</p>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-label">Reducción en tiempo de procesos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">$250K+</div>
+                        <div class="stat-label">Ahorros anuales promedio</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Clientes satisfechos</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacto -->
+        <section id="contacto" class="contact-section">
             <div class="contact-content">
-                <h3>¿Listo para transformar tu negocio?</h3>
-                <p>Agenda una consulta gratuita y descubre cómo podemos ayudarte.</p>
+                <h3>¿Listo para automatizar tu negocio?</h3>
+                <p>Agenda una consulta gratuita y descubre cómo podemos optimizar tus procesos</p>
                 <form class="contact-form" id="contactForm">
-                    <input type="text" id="name" name="name" placeholder="Nombre completo" required>
-                    <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
-                    <input type="tel" id="phone" name="phone" placeholder="Teléfono (opcional)">
-                    <textarea id="message" name="message" placeholder="¿En qué podemos ayudarte?" rows="4"
-                        required></textarea>
-                    <button type="submit" id="submitBtn">Enviar Mensaje</button>
+                    <input type="text" id="name" placeholder="Nombre completo" required>
+                    <input type="email" id="email" placeholder="Correo electrónico" required>
+                    <input type="tel" id="phone" placeholder="Teléfono (opcional)">
+                    <textarea id="message" placeholder="Cuéntanos sobre tu proyecto" rows="4" required></textarea>
+                    <button type="submit" id="submitBtn">Enviar Consulta</button>
                 </form>
             </div>
         </section>
+
     </main>
 
     <!-- Footer -->
@@ -111,9 +173,9 @@
         <div class="footer-content">
             <div class="footer-logo">
                 <a href="index.html" class="logo-text logo-white">
-                    <span class="logo-main text-white">AAE</span>
-                    <span class="logo-sub text-white">Systems</span>
-                    <div class="logo-decoration text-white"><span>❖</span></div>
+                    <span class="logo-main">AAE</span>
+                    <span class="logo-sub">Systems</span>
+                    <div class="logo-decoration"><span>❖</span></div>
                 </a>
             </div>
             <p class="footer-slogan">AUTOMATIZACIÓN INTELIGENTE PARA TU NEGOCIO</p>
