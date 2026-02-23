@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestros Servicios - AAE Systems</title>
+    <meta name="description"
+        content="Descubre los servicios de AAE Systems: ahorra tiempo, aumenta tu efectividad y escala tu negocio con automatización inteligente.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png?v=2">
+
+    <style>
+        /* ─────────── Nuestros Servicios — Page Styles ─────────── */
+
+        /* ── Intro text ── */
+        .servicios-intro {
+            max-width: 720px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 0 3rem;
+        }
+
+        .servicios-intro h2 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-black);
+            margin-bottom: 1rem;
+        }
+
+        .servicios-intro p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--color-gray);
+        }
+
+        /* ── Benefit cards grid ── */
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+        }
+
+        .benefit-item {
+            padding: 3rem 2.5rem;
+            border: 1px solid var(--color-gray-lighter);
+            margin: -0.5px;
+            position: relative;
+            transition: all 0.4s ease;
+            background: var(--color-white);
+        }
+
+        .benefit-item:hover {
+            background: var(--color-black);
+            z-index: 2;
+        }
+
+        .benefit-item:hover .benefit-num,
+        .benefit-item:hover .benefit-title,
+        .benefit-item:hover .benefit-desc {
+            color: var(--color-white);
+        }
+
+        .benefit-item:hover .benefit-num {
+            opacity: 0.25;
+        }
+
+        .benefit-item:hover .benefit-line {
+            background: var(--color-white);
+            width: 50px;
+        }
+
+        .benefit-num {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--color-gray-lighter);
+            line-height: 1;
+            margin-bottom: 1.2rem;
+            transition: all 0.4s ease;
+        }
+
+        .benefit-title {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--color-black);
+            margin-bottom: 0.8rem;
+            transition: color 0.4s ease;
+        }
+
+        .benefit-line {
+            width: 35px;
+            height: 2px;
+            background: var(--color-black);
+            margin-bottom: 1rem;
+            transition: all 0.4s ease;
+        }
+
+        .benefit-desc {
+            font-size: 0.95rem;
+            line-height: 1.75;
+            color: var(--color-gray);
+            transition: color 0.4s ease;
+        }
+
+        /* ── Stats band ── */
+        .servicios-stats {
+            background: linear-gradient(-45deg, #1a1a1a, #666666, #333333, #777777);
+            background-size: 400% 400%;
+            animation: gradientAnimation 5s ease infinite;
+            padding: 5rem 0;
+            margin: 5rem 0;
+        }
+
+        .servicios-stats .stats-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .s-stat {
+            padding: 1rem;
+        }
+
+        .s-stat-number {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--color-white);
+            line-height: 1;
+            margin-bottom: 0.6rem;
+        }
+
+        .s-stat-label {
+            font-size: 0.9rem;
+            color: var(--color-gray-light);
+            line-height: 1.5;
+        }
+
+        /* ── Process / How it works ── */
+        .process-section {
+            padding: 5rem 0;
+        }
+
+        .process-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .process-header h2 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-black);
+            margin-bottom: 0.8rem;
+        }
+
+        .process-header p {
+            font-size: 1.05rem;
+            color: var(--color-gray);
+        }
+
+        .process-timeline {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            position: relative;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            top: 28px;
+            left: 12.5%;
+            right: 12.5%;
+            height: 2px;
+            background: var(--color-gray-lighter);
+            z-index: 0;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-dot {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--color-black);
+            color: var(--color-white);
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .process-step:hover .step-dot {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .process-step h4 {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--color-black);
+            margin-bottom: 0.6rem;
+        }
+
+        .process-step p {
+            font-size: 0.9rem;
+            color: var(--color-gray);
+            line-height: 1.6;
+        }
+
+        /* ── Promise section ── */
+        .promise-section {
+            padding: 5rem 0;
+            border-top: 1px solid var(--color-gray-lighter);
+        }
+
+        .promise-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .promise-text h2 {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--color-black);
+            margin-bottom: 1.2rem;
+            line-height: 1.2;
+        }
+
+        .promise-text p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--color-gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .promise-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .promise-list li {
+            font-size: 1rem;
+            color: var(--color-black);
+            padding: 0.7rem 0;
+            border-bottom: 1px solid var(--color-gray-lighter);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .promise-list li:last-child {
+            border-bottom: none;
+        }
+
+        .promise-list .check {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--color-black);
+            color: var(--color-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            flex-shrink: 0;
+        }
+
+        .promise-visual {
+            position: relative;
+        }
+
+        .promise-card-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .mini-card {
+            background: linear-gradient(-45deg, #000000, #222222, #0a0a0a, #333333);
+            background-size: 400% 400%;
+            animation: gradientAnimation 5s ease infinite;
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+
+        .mini-card:hover {
+            transform: translateX(8px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .mini-card-icon {
+            font-size: 1.8rem;
+        }
+
+        .mini-card-text {
+            color: var(--color-gray-light);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .mini-card-text strong {
+            display: block;
+            color: var(--color-white);
+            font-size: 1rem;
+            margin-bottom: 2px;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 1024px) {
+            .benefit-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .servicios-stats .stats-inner {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-timeline {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .process-timeline::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .benefit-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .benefit-item {
+                padding: 2.5rem 2rem;
+            }
+
+            .servicios-intro h2,
+            .process-header h2,
+            .promise-text h2 {
+                font-size: 2rem;
+            }
+
+            .servicios-stats .stats-inner {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .s-stat-number {
+                font-size: 2.4rem;
+            }
+
+            .process-timeline {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .promise-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .servicios-stats .stats-inner {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo-text">
+                    <span class="logo-main">AAE</span>
+                    <span class="logo-sub">Systems</span>
+                    <div class="logo-decoration"><span>❖</span></div>
+                </a>
+            </div>
+            <div class="menu-container">
+                <button class="hamburger-btn" id="menuToggle" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="dropdown-menu" id="dropdownMenu">
+                    <a href="index.html" class="menu-link">Inicio</a>
+                    <a href="about.html" class="menu-link">Quienes somos</a>
+                    <a href="planes.html" class="menu-link">Planes</a>
+                    <a href="beneficios.html" class="menu-link">Nuestros Servicios</a>
+                    <a href="politicas.html" class="menu-link">Políticas</a>
+                    <a href="contacto.html" class="menu-link">Contáctanos</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- HERO -->
+        <section class="hero-section" style="min-height: 50vh;">
+            <div class="hero-card container">
+                <div class="hero-bg"></div>
+                <div class="hero-content">
+                    <span class="badge">NUESTROS SERVICIOS</span>
+                    <h1 class="hero-title">Tu Crecimiento,<br>Nuestro Sistema</h1>
+                    <div class="divider"></div>
+                    <p class="hero-subtitle">
+                        No vendemos herramientas sueltas. Diseñamos un ecosistema digital completo que trabaja por ti:
+                        captando clientes, cerrando ventas y optimizando tu operación — todo de forma automática.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="contacto.html" class="btn-primary"
+                            style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">
+                            Agendar Diagnóstico Gratuito
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTRO -->
+        <section style="padding: 5rem 0 2rem;">
+            <div class="servicios-intro">
+                <h2>Lo que hacemos por tu negocio</h2>
+                <p>
+                    Cada servicio que ofrecemos resuelve un problema real. No implementamos tecnología por implementar
+                    — construimos la infraestructura exacta que tu empresa necesita para crecer sin
+                    depender de esfuerzo manual.
+                </p>
+            </div>
+        </section>
+
+        <!-- BENEFICIOS — GRID EDITORIAL -->
+        <section style="padding: 0 0 2rem;">
+            <div class="benefit-grid">
+
+                <div class="benefit-item">
+                    <div class="benefit-num">01</div>
+                    <h3 class="benefit-title">Ahorro Radical de Tiempo</h3>
+                    <div class="benefit-line"></div>
+                    <p class="benefit-desc">
+                        Automatizamos las tareas que te quitan horas cada día: responder mensajes, enviar cotizaciones,
+                        dar seguimiento y actualizar datos. Recupera tu agenda para enfocarte en decisiones
+                        estratégicas.
+                    </p>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-num">02</div>
+                    <h3 class="benefit-title">Efectividad Comercial</h3>
+                    <div class="benefit-line"></div>
+                    <p class="benefit-desc">
+                        Tus prospectos se clasifican, priorizan y nutren de forma automática. Tu equipo de ventas solo
+                        habla con quienes realmente están listos para comprar. Cada interacción cuenta.
+                    </p>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-num">03</div>
+                    <h3 class="benefit-title">Crecimiento Escalable</h3>
+                    <div class="benefit-line"></div>
+                    <p class="benefit-desc">
+                        Diseñamos sistemas que crecen contigo. Da igual si recibes 10 o 10,000 prospectos al mes
+                        — tu infraestructura digital opera sin cuellos de botella ni costos de personal extra.
+                    </p>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-num">04</div>
+                    <h3 class="benefit-title">Operación 24/7</h3>
+                    <div class="benefit-line"></div>
+                    <p class="benefit-desc">
+                        Tu ecosistema digital no duerme. Mientras descansas, sigue capturando leads, respondiendo
+                        consultas, enviando recordatorios y agendando citas. Nunca pierdas otra oportunidad.
+                    </p>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-num">05</div>
+                    <h3 class="benefit-title">Precisión Sin Errores</h3>
+                    <div class="benefit-line"></div>
+                    <p class="benefit-desc">
+                        Los leads que se olvidan, los correos que no salen, los datos mal capturados — eso se termina.
+                        Nuestros flujos garantizan consistencia en cada punto de contacto con tu cliente.
+                    </p>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-num">06</div>
+                    <h3 class="benefit-title">Resultados Medibles</h3>
+                    <div class="benefit-line"></div>
+                    <p class="benefit-desc">
+                        Todo lo que implementamos está conectado a datos reales: leads generados, citas agendadas,
+                        ventas cerradas. Tú ves los números, nosotros optimizamos lo que funciona.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- STATS BAND — Full Width -->
+    <section class="servicios-stats">
+        <div class="stats-inner">
+            <div class="s-stat">
+                <div class="s-stat-number">+80%</div>
+                <div class="s-stat-label">Reducción de tareas manuales repetitivas</div>
+            </div>
+            <div class="s-stat">
+                <div class="s-stat-number">24/7</div>
+                <div class="s-stat-label">Captación y seguimiento sin pausas</div>
+            </div>
+            <div class="s-stat">
+                <div class="s-stat-number">3×</div>
+                <div class="s-stat-label">Más conversiones con el mismo equipo</div>
+            </div>
+            <div class="s-stat">
+                <div class="s-stat-number">90 días</div>
+                <div class="s-stat-label">Para ver retorno positivo de inversión</div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+
+        <!-- PROCESO -->
+        <section class="process-section">
+            <div class="process-header">
+                <h2>Cómo Trabajamos</h2>
+                <p>Un proceso claro, sin sorpresas, enfocado en resultados desde el primer día.</p>
+            </div>
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-dot">1</div>
+                    <h4>Diagnóstico</h4>
+                    <p>Analizamos tu operación actual y detectamos exactamente dónde estás perdiendo tiempo, leads y
+                        ventas.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-dot">2</div>
+                    <h4>Diseño</h4>
+                    <p>Creamos la arquitectura digital personalizada que conecta todas tus herramientas en un solo
+                        ecosistema.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-dot">3</div>
+                    <h4>Implementación</h4>
+                    <p>Construimos e instalamos todo. Tú apruebas y observas cómo se activa tu máquina de
+                        crecimiento.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-dot">4</div>
+                    <h4>Optimización</h4>
+                    <p>Monitoreamos resultados, ajustamos flujos y escalamos lo que funciona. Tu sistema mejora mes a
+                        mes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROMESA — Split Layout -->
+        <section class="promise-section">
+            <div class="promise-grid">
+                <div class="promise-text">
+                    <h2>Nuestro compromiso contigo</h2>
+                    <p>
+                        No somos solo proveedores de tecnología. Somos el equipo que diseña, implementa y optimiza
+                        la infraestructura de crecimiento de tu empresa — para que tú solo te concentres
+                        en dirigir tu negocio.
+                    </p>
+                    <ul class="promise-list">
+                        <li>
+                            <span class="check">✓</span>
+                            Sin contratos de permanencia forzada
+                        </li>
+                        <li>
+                            <span class="check">✓</span>
+                            Soporte dedicado en cada etapa
+                        </li>
+                        <li>
+                            <span class="check">✓</span>
+                            Resultados medibles desde el primer mes
+                        </li>
+                        <li>
+                            <span class="check">✓</span>
+                            Tecnología que tú controlas, no al revés
+                        </li>
+                    </ul>
+                </div>
+                <div class="promise-visual">
+                    <div class="promise-card-stack">
+                        <div class="mini-card">
+                            <span class="mini-card-icon">🌐</span>
+                            <div class="mini-card-text">
+                                <strong>Desarrollo Web</strong>
+                                Sitios que convierten visitantes en clientes
+                            </div>
+                        </div>
+                        <div class="mini-card">
+                            <span class="mini-card-icon"><i class="ri-settings-3-line"
+                                    style="color: #60a5fa;"></i></span>
+                            <div class="mini-card-text">
+                                <strong>Automatización</strong>
+                                Flujos que eliminan el trabajo manual
+                            </div>
+                        </div>
+                        <div class="mini-card">
+                            <span class="mini-card-icon"><i class="ri-share-forward-line"
+                                    style="color: #a78bfa;"></i></span>
+                            <div class="mini-card-text">
+                                <strong>Redes Sociales</strong>
+                                Captación inteligente en WhatsApp e Instagram
+                            </div>
+                        </div>
+                        <div class="mini-card">
+                            <span class="mini-card-icon">📧</span>
+                            <div class="mini-card-text">
+                                <strong>Email Marketing</strong>
+                                Secuencias que nutren y cierran ventas
+                            </div>
+                        </div>
+                        <div class="mini-card">
+                            <span class="mini-card-icon"><i class="ri-pie-chart-line"
+                                    style="color: #fb923c;"></i></span>
+                            <div class="mini-card-text">
+                                <strong>Base de Datos</strong>
+                                Scoring automático para priorizar leads
+                            </div>
+                        </div>
+                        <div class="mini-card">
+                            <span class="mini-card-icon"><i class="ri-code-s-slash-line"
+                                    style="color: #34d399;"></i></span>
+                            <div class="mini-card-text">
+                                <strong>Software a Medida</strong>
+                                Herramientas digitales adaptadas a tu negocio
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA FINAL -->
+        <section class="contact-section">
+            <div class="contact-content">
+                <h3>¿Listo para dejar de trabajar más y empezar a crecer más?</h3>
+                <p>
+                    Agenda una consultoría gratuita y descubre cómo tu negocio puede operar de forma más inteligente
+                    desde esta semana.
+                </p>
+                <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="contacto.html" class="btn-primary"
+                        style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">
+                        Agendar Diagnóstico Gratuito
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                    <a href="planes.html" class="btn-secondary"
+                        style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; color: var(--color-black); border-color: var(--color-black);">
+                        Ver Planes y Precios
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="index.html" class="logo-text logo-white">
+                    <span class="logo-main">AAE</span>
+                    <span class="logo-sub">Systems</span>
+                    <div class="logo-decoration"><span>❖</span></div>
+                </a>
+            </div>
+            <p class="footer-slogan">GROWTH AUTOMATION · WEB · REDES · EMAIL · SOFTWARE · LEADS</p>
+
+            <div class="footer-links">
+                <a href="index.html">Inicio</a>
+                <a href="about.html">Quienes somos</a>
+                <a href="planes.html">Planes</a>
+                <a href="beneficios.html">Nuestros Servicios</a>
+                <a href="politicas.html">Políticas</a>
+                <a href="contacto.html">Contáctanos</a>
+            </div>
+
+            <div class="footer-social">
+                <a href="https://wa.me/5217341271314" target="_blank" aria-label="WhatsApp"><i
+                        class="ri-whatsapp-fill"></i></a>
+                <a href="https://www.instagram.com/aaesystems.mx/" target="_blank" aria-label="Instagram"><i
+                        class="ri-instagram-fill"></i></a>
+                <a href="https://www.linkedin.com/in/aae-systems-1484563b2/" target="_blank" aria-label="LinkedIn"><i
+                        class="ri-linkedin-fill"></i></a>
+            </div>
+
+            <p class="copyright">© 2026 AAE Systems. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js?v=1.3"></script>
+</body>
+
+</html>

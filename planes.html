@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planes y Precios - AAE Systems</title>
+    <meta name="description"
+        content="Planes de Growth Automation para tu empresa: Captación Digital, Sistema de Ventas con IA, y Growth Automation Pro. Descarga la propuesta completa en PDF.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png?v=2">
+
+    <style>
+        /* ── PDF BANNER — REDESIGN ── */
+        .pdf-banner {
+            background: linear-gradient(-45deg, #1a1a1a, #444444, #222222, #555555);
+            background-size: 400% 400%;
+            animation: gradientAnimation 5s ease infinite;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            padding: 4rem;
+            margin: 4rem 0 6rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .pdf-banner-text h3 {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            color: var(--color-white);
+            margin-bottom: 0.8rem;
+        }
+
+        .pdf-banner-text p {
+            font-size: 1rem;
+            color: var(--color-gray-light);
+            max-width: 500px;
+            line-height: 1.6;
+        }
+
+        .btn-pdf {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--color-white);
+            color: var(--color-black);
+            font-weight: 600;
+            padding: 1.2rem 2.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .btn-pdf:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.1);
+        }
+
+        /* ── GRID PLANES — PREMIUM CARDS ── */
+        .plans-combined-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 8rem;
+        }
+
+        .plan-combined-card {
+            border: 1px solid var(--color-gray-lighter);
+            background: var(--color-white);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border-radius: 2px;
+        }
+
+        .plan-combined-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+            border-color: var(--color-black);
+        }
+
+        .plan-card-header {
+            padding: 4rem 2.5rem 3rem;
+            text-align: center;
+            border-bottom: 1px solid var(--color-gray-lighter);
+        }
+
+        .plan-card-header .plan-icon {
+            font-size: 3rem;
+            color: var(--color-black);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .plan-card-header h3 {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--color-black);
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .plan-card-header p {
+            font-size: 0.9rem;
+            color: var(--color-gray);
+            line-height: 1.5;
+            max-width: 250px;
+            margin: 0 auto;
+        }
+
+        .recommended-badge {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--color-black);
+            color: var(--color-white);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 8px 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            z-index: 10;
+        }
+
+        .plan-card-body {
+            padding: 3rem 2.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .plan-price-row {
+            margin-bottom: 3rem;
+        }
+
+        .plan-price-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .plan-price-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--color-gray-light);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .plan-price-value {
+            font-family: var(--font-serif);
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--color-black);
+            line-height: 1;
+        }
+
+        .plan-price-value span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--color-gray);
+            font-family: var(--font-sans);
+        }
+
+        .plan-delivery {
+            font-size: 0.85rem;
+            color: var(--color-gray-dark);
+            background: var(--color-gray-lighter);
+            padding: 1rem;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .plan-highlights {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 3.5rem;
+            flex: 1;
+        }
+
+        .plan-highlights li {
+            display: flex;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: var(--color-gray-dark);
+            margin-bottom: 14px;
+            line-height: 1.4;
+        }
+
+        .plan-highlights li i {
+            color: var(--color-black);
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        .plan-highlights .promo-item {
+            color: var(--color-black);
+            font-weight: 700;
+        }
+
+        .plan-cta {
+            display: block;
+            text-align: center;
+            padding: 1.3rem;
+            border: 2px solid var(--color-black);
+            background: transparent;
+            color: var(--color-black);
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+        }
+
+        .plan-cta:hover {
+            background: var(--color-black);
+            color: var(--color-white);
+        }
+
+        /* ── SERVICIOS INDIVIDUALES — REDESIGN ── */
+        .individual-mini {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 8rem;
+        }
+
+        .individual-mini-card {
+            border: 1px solid var(--color-gray-lighter);
+            padding: 3rem;
+            display: flex;
+            gap: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .individual-mini-card:hover {
+            border-color: var(--color-black);
+            background: #fafafa;
+        }
+
+        .individual-mini-icon {
+            font-size: 2.8rem;
+            color: var(--color-black);
+        }
+
+        .individual-mini-info h4 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .individual-mini-info .mini-price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--color-black);
+            margin-bottom: 1.2rem;
+            display: block;
+        }
+
+        .individual-mini-info p {
+            font-size: 0.95rem;
+            color: var(--color-gray);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ── CONDITIONS ── */
+        .conditions-strip {
+            border-top: 1px solid var(--color-black);
+            padding: 5rem 0;
+            margin-bottom: 6rem;
+        }
+
+        .conditions-strip h3 {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .conditions-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .conditions-list li {
+            font-size: 0.9rem;
+            color: var(--color-gray);
+            line-height: 1.6;
+            list-style: none;
+            display: flex;
+            gap: 12px;
+        }
+
+        .conditions-list li::before {
+            content: "—";
+            color: var(--color-black);
+            font-weight: 900;
+        }
+
+        @media (max-width: 1024px) {
+            .plans-combined-grid {
+                grid-template-columns: 1fr;
+                max-width: 450px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .individual-mini {
+                grid-template-columns: 1fr;
+            }
+
+            .conditions-list {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .pdf-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 4rem 2rem;
+            }
+
+            .btn-pdf {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo-text">
+                    <span class="logo-main">AAE</span>
+                    <span class="logo-sub">Systems</span>
+                    <div class="logo-decoration"><span>❖</span></div>
+                </a>
+            </div>
+            <div class="menu-container">
+                <button class="hamburger-btn" id="menuToggle" aria-label="Abrir menú">
+                    <span></span><span></span><span></span>
+                </button>
+                <nav class="dropdown-menu" id="dropdownMenu">
+                    <a href="index.html" class="menu-link">Inicio</a>
+                    <a href="about.html" class="menu-link">Quienes somos</a>
+                    <a href="planes.html" class="menu-link">Planes</a>
+                    <a href="beneficios.html" class="menu-link">Nuestros Servicios</a>
+                    <a href="politicas.html" class="menu-link">Políticas</a>
+                    <a href="contacto.html" class="menu-link">Contáctanos</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Hero -->
+        <section class="hero-section" style="min-height: 38vh;">
+            <div class="hero-card container">
+                <div class="hero-bg"></div>
+                <div class="hero-content">
+                    <span class="badge">PORTAFOLIO DE SERVICIOS</span>
+                    <h1 class="hero-title">Planes y Precios</h1>
+                    <div class="divider"></div>
+                    <p class="hero-subtitle">Escoge el nivel de crecimiento que tu negocio necesita.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════ DESCARGA PDF ════ -->
+        <div class="pdf-banner">
+            <div class="pdf-banner-text">
+                <h3>Propuesta completa de servicios</h3>
+                <p>Descarga el documento con todos los detalles, precios, incluidos y condiciones de cada plan.</p>
+            </div>
+            <a href="propuesta_servicios_aae.pdf" download class="btn-pdf">
+                <i class="ri-file-download-line"></i>
+                Descargar PDF
+            </a>
+        </div>
+
+        <!-- ════ SERVICIOS INDIVIDUALES ════ -->
+        <section style="margin-bottom: 2rem;">
+            <div class="section-header">
+                <h2>Servicios Individuales</h2>
+            </div>
+            <div class="individual-mini">
+                <div class="individual-mini-card">
+                    <i class="ri-global-line individual-mini-icon"></i>
+                    <div class="individual-mini-info">
+                        <h4>Desarrollo Web Estratégico</h4>
+                        <span class="mini-price">Desde $3,999 MXN</span>
+                        <p>Arquitectura digital optimizada para buscadores y enfocada 100% en la conversión de
+                            visitantes en clientes.</p>
+                        <a href="contacto.html" class="menu-link" style="padding: 0; font-weight: 700;">Solicitar
+                            cotización →</a>
+                    </div>
+                </div>
+                <div class="individual-mini-card">
+                    <i class="ri-smartphone-line individual-mini-icon"></i>
+                    <div class="individual-mini-info">
+                        <h4>Automatización de Redes</h4>
+                        <span class="mini-price">Desde $3,499 MXN</span>
+                        <p>Elimina las tareas repetitivas en redes sociales mediante flujos inteligentes de respuesta y
+                            captura.</p>
+                        <a href="contacto.html" class="menu-link" style="padding: 0; font-weight: 700;">Solicitar
+                            cotización →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════ PLANES FUSIONADOS ════ -->
+        <section>
+            <div class="section-header" style="margin-bottom: 30px;">
+                <h2>Paquetes todo-en-uno</h2>
+            </div>
+            <p style="color: var(--color-gray); margin-bottom: 36px; font-size: 0.95rem;">
+                Cada paquete incluye la implementación completa (pago único) + <strong
+                    style="color:var(--color-black);">al menos 1 mes de mantenimiento gratis</strong>, y el plan de
+                mantenimiento mensual recomendado para mantener tu sistema optimizado.
+            </p>
+
+            <div class="plans-combined-grid">
+
+                <!-- BRONCE -->
+                <div class="plan-combined-card">
+                    <div class="plan-card-header">
+                        <i class="ri-focus-3-line plan-icon"></i>
+                        <h3>Captación Digital</h3>
+                        <p>Cimentación de infraestructura para negocios con visión digital.</p>
+                    </div>
+                    <div class="plan-card-body">
+                        <div class="plan-price-row">
+                            <div class="plan-price-item">
+                                <span class="plan-price-label">Implementación</span>
+                                <div class="plan-price-value">$12,999 <span>MXN</span></div>
+                            </div>
+                            <div class="plan-price-item">
+                                <span class="plan-price-label">Mantenimiento</span>
+                                <div class="plan-price-value">$2,699 <span>MXN/mes</span></div>
+                            </div>
+                        </div>
+                        <p class="plan-delivery"><i class="ri-time-line"></i> Entrega: 2 a 3 semanas</p>
+                        <ul class="plan-highlights">
+                            <li class="promo-item"><i class="ri-gift-line"></i> 1 Mes de Mantenimiento GRATIS</li>
+                            <li><i class="ri-checkbox-circle-line"></i> Landing page de alto rendimiento</li>
+                            <li><i class="ri-checkbox-circle-line"></i> Automatización básica de prospectos</li>
+                            <li><i class="ri-checkbox-circle-line"></i> Base de datos de leads estructurada</li>
+                            <li><i class="ri-checkbox-circle-line"></i> Reporte mensual de rendimiento</li>
+                        </ul>
+                        <a href="https://cal.com/aaesystems-ew7rwz" target="_blank" class="plan-cta">Agendar Ahora</a>
+                    </div>
+                </div>
+
+                <!-- PLATA -->
+                <div class="plan-combined-card">
+                    <span class="recommended-badge">Recomendado</span>
+                    <div class="plan-card-header">
+                        <i class="ri-rocket-line plan-icon"></i>
+                        <h3>Sistema de Ventas IA</h3>
+                        <p>Automatización avanzada para empresas enfocadas en el escalamiento.</p>
+                    </div>
+                    <div class="plan-card-body">
+                        <div class="plan-price-row">
+                            <div class="plan-price-item">
+                                <span class="plan-price-label">Implementación</span>
+                                <div class="plan-price-value">$24,999 <span>MXN</span></div>
+                            </div>
+                            <div class="plan-price-item">
+                                <span class="plan-price-label">Mantenimiento</span>
+                                <div class="plan-price-value">$4,499 <span>MXN/mes</span></div>
+                            </div>
+                        </div>
+                        <p class="plan-delivery"><i class="ri-time-line"></i> Entrega: 3 a 5 semanas</p>
+                        <ul class="plan-highlights">
+                            <li class="promo-item"><i class="ri-gift-line"></i> 2 Meses de Mantenimiento GRATIS</li>
+                            <li><i class="ri-checkbox-circle-line"></i> Automatización de redes con IA</li>
+                            <li><i class="ri-checkbox-circle-line"></i> Lead Scoring inteligente</li>
+                            <li><i class="ri-checkbox-circle-line"></i> Email marketing automatizado</li>
+                            <li><i class="ri-checkbox-circle-line"></i> Soporte prioritario 24/7</li>
+                        </ul>
+                        <a href="https://cal.com/aaesystems-ew7rwz" target="_blank" class="plan-cta">Agendar Ahora</a>
+                    </div>
+                </div>
+
+                <!-- ORO -->
+                <div class="plan-combined-card">
+                    <div class="plan-card-header">
+                        <i class="ri-medal-line plan-icon"></i>
+                        <h3>Growth Automation Pro</h3>
+                        <p>Transformación integral mediante ecosistemas de IA personalizados.</p>
+                    </div>
+                    <div class="plan-card-body">
+                        <div class="plan-price-row">
+                            <div class="plan-price-item">
+                                <span class="plan-price-label">Implementación</span>
+                                <div class="plan-price-value">$49,999 <span>MXN</span></div>
+                            </div>
+                            <div class="plan-price-item">
+                                <span class="plan-price-label">Mantenimiento</span>
+                                <div class="plan-price-value">$8,999 <span>MXN/mes</span></div>
+                            </div>
+                        </div>
+                        <p class="plan-delivery"><i class="ri-time-line"></i> Entrega: 4 a 8 semanas</p>
+                        <ul class="plan-highlights">
+                            <li class="promo-item"><i class="ri-gift-line"></i> 3 Meses de Mantenimiento GRATIS</li>
+                            <li><i class="ri-checkbox-circle-line"></i> Software IA a medida</li>
+                            <li><i class="ri-checkbox-circle-line"></i> Dashboard de analítica en tiempo real</li>
+                            <li><i class="ri-checkbox-circle-line"></i> Consultoría estratégica mensual</li>
+                            <li><i class="ri-checkbox-circle-line"></i> Ajustes y optimización ilimitados</li>
+                        </ul>
+                        <a href="https://cal.com/aaesystems-ew7rwz" target="_blank" class="plan-cta">Agendar Ahora</a>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+        </section>
+
+        <!-- ════ CONDICIONES ════ -->
+        <div class="conditions-strip">
+            <h3>Condiciones Generales</h3>
+            <ul class="conditions-list">
+                <li>50% anticipo para iniciar el proyecto</li>
+                <li>50% contra entrega o por hitos definidos</li>
+                <li>Tiempos pueden variar según disponibilidad del cliente</li>
+                <li>El mantenimiento garantiza resultados a largo plazo</li>
+                <li>Desarrollos adicionales se cotizan por separado</li>
+                <li>Contrato mínimo de mantenimiento: 3 meses</li>
+            </ul>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="index.html" class="logo-text logo-white">
+                    <span class="logo-main">AAE</span>
+                    <span class="logo-sub">Systems</span>
+                    <div class="logo-decoration"><span>❖</span></div>
+                </a>
+            </div>
+            <p class="footer-slogan">GROWTH AUTOMATION · WEB · REDES · EMAIL · SOFTWARE · LEADS</p>
+            <div class="footer-links">
+                <a href="index.html">Inicio</a>
+                <a href="about.html">Quienes somos</a>
+                <a href="planes.html">Planes</a>
+                <a href="beneficios.html">Nuestros Servicios</a>
+                <a href="politicas.html">Políticas</a>
+                <a href="contacto.html">Contáctanos</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://wa.me/5217341271314" target="_blank" aria-label="WhatsApp"><i
+                        class="ri-whatsapp-fill"></i></a>
+                <a href="https://www.instagram.com/aaesystems.mx/" target="_blank" aria-label="Instagram"><i
+                        class="ri-instagram-fill"></i></a>
+                <a href="https://www.linkedin.com/in/aae-systems-1484563b2/" target="_blank" aria-label="LinkedIn"><i
+                        class="ri-linkedin-fill"></i></a>
+            </div>
+            <p class="copyright">© 2026 AAE Systems. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js?v=1.3"></script>
+</body>
+
+</html>

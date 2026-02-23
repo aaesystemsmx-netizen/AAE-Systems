@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AAE Systems - Automatización Inteligente</title>
+    <meta name="description"
+        content="AAE Systems - Agencia especializada en automatización de procesos, integración de sistemas y soluciones de IA para tu negocio.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png?v=2">
+    <style>
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 60px;
+            margin-bottom: 8rem;
+            align-items: start;
+        }
+
+        .contact-form-wrapper {
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-lighter);
+            padding: 4rem;
+            border-radius: 4px;
+        }
+
+        .contact-form-wrapper h3 {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: var(--color-black);
+        }
+
+        .contact-form-wrapper p {
+            font-size: 1.1rem;
+            color: var(--color-gray);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 25px;
+        }
+
+        .form-group {
+            display: grid;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-gray-dark);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1.2rem;
+            border: 1px solid var(--color-gray-lighter);
+            background: #fafafa;
+            color: var(--color-black);
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--color-black);
+            background: var(--color-white);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-form button {
+            background: var(--color-black);
+            color: var(--color-white);
+            border: none;
+            padding: 1.3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .contact-form button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-sidebar {
+            display: grid;
+            gap: 20px;
+        }
+
+        .sidebar-item {
+            background: var(--color-black);
+            padding: 2.5rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .sidebar-item i {
+            font-size: 2rem;
+            color: var(--color-white);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .sidebar-item h4 {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--color-white);
+        }
+
+        .sidebar-item p {
+            font-size: 0.95rem;
+            color: var(--color-gray-lighter);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 900px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .contact-form-wrapper {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo-text">
+                    <span class="logo-main">AAE</span>
+                    <span class="logo-sub">Systems</span>
+                    <div class="logo-decoration"><span>❖</span></div>
+                </a>
+            </div>
+            <div class="menu-container">
+                <button class="hamburger-btn" id="menuToggle" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="dropdown-menu" id="dropdownMenu">
+                    <a href="index.html" class="menu-link">Inicio</a>
+                    <a href="about.html" class="menu-link">Quienes somos</a>
+                    <a href="planes.html" class="menu-link">Planes</a>
+                    <a href="beneficios.html" class="menu-link">Nuestros Servicios</a>
+                    <a href="politicas.html" class="menu-link">Políticas</a>
+                    <a href="contacto.html" class="menu-link">Contáctanos</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- PAGE HEADER -->
+        <section class="hero-section" style="min-height: 40vh;">
+            <div class="hero-card container">
+                <div class="hero-bg"></div>
+                <div class="hero-content">
+                    <span class="badge">SESIÓN DE DESCUBRIMIENTO</span>
+                    <h1 class="hero-title">Inicia tu Transformación</h1>
+                    <div class="divider"></div>
+                    <p class="hero-subtitle">Cuéntanos tu cuello de botella actual y diseñemos juntos el sistema que
+                        escalará tu negocio.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacto -->
+        <section class="contact-section" style="padding-top: 0;">
+            <div class="contact-container">
+                <div class="contact-form-wrapper">
+                    <h3>¿Listo para automatizar?</h3>
+                    <p>Completa el formulario y un estratega de AAE Systems analizará tu caso antes de nuestra primera
+                        llamada.</p>
+
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nombre Completo</label>
+                            <input type="text" id="name" placeholder="Ej. Juan Pérez" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail Corporativo</label>
+                            <input type="email" id="email" placeholder="nombre@empresa.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">WhatsApp / Teléfono</label>
+                            <input type="tel" id="phone" placeholder="+52 ...">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Sobre tu proyecto</label>
+                            <textarea id="message" placeholder="¿Qué procesos te gustaría automatizar hoy?" rows="4"
+                                required></textarea>
+                        </div>
+                        <button type="submit" id="submitBtn">Enviar Solicitud de Consulta</button>
+                    </form>
+                </div>
+
+                <div class="contact-sidebar">
+                    <div class="sidebar-item">
+                        <i class="ri-flashlight-line"></i>
+                        <h4>Respuesta en &lt;24h</h4>
+                        <p>Nuestro equipo estratégico analiza cada solicitud minuciosamente para contactarte el mismo
+                            día.</p>
+                    </div>
+                    <div class="sidebar-item">
+                        <i class="ri-shield-star-line"></i>
+                        <h4>Enfoque Proactivo</h4>
+                        <p>Diseñamos sistemas que no solo resuelven problemas, sino que crean nuevas oportunidades de
+                            ingresos.</p>
+                    </div>
+                    <div class="sidebar-item">
+                        <i class="ri-global-line"></i>
+                        <h4>Ecosistema de IA</h4>
+                        <p>Soluciones integrales diseñadas para empresas que buscan liderar la automatización en su
+                            sector.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="index.html" class="logo-text logo-white">
+                    <span class="logo-main">AAE</span>
+                    <span class="logo-sub">Systems</span>
+                    <div class="logo-decoration"><span>❖</span></div>
+                </a>
+            </div>
+            <p class="footer-slogan">GROWTH AUTOMATION · WEB · REDES · EMAIL · SOFTWARE · LEADS</p>
+
+            <div class="footer-links">
+                <a href="index.html">Inicio</a>
+                <a href="about.html">Quienes somos</a>
+                <a href="planes.html">Planes</a>
+                <a href="beneficios.html">Nuestros Servicios</a>
+                <a href="politicas.html">Políticas</a>
+                <a href="contacto.html">Contáctanos</a>
+            </div>
+
+            <div class="footer-social">
+                <a href="https://wa.me/5217341271314" target="_blank" aria-label="WhatsApp"><i
+                        class="ri-whatsapp-fill"></i></a>
+                <a href="https://www.instagram.com/aaesystems.mx/" target="_blank" aria-label="Instagram"><i
+                        class="ri-instagram-fill"></i></a>
+                <a href="https://www.linkedin.com/in/aae-systems-1484563b2/" target="_blank" aria-label="LinkedIn"><i
+                        class="ri-linkedin-fill"></i></a>
+            </div>
+
+            <p class="copyright">© 2026 AAE Systems. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js?v=1.3"></script>
+</body>
+
+</html>

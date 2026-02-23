@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiénes Somos - AAE Systems</title>
+    <meta name="description"
+        content="Conoce AAE Systems: la agencia de Growth Automation que diseña ecosistemas digitales completos para escalar negocios B2B.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png?v=2">
+
+    <style>
+        /* ─────────── Quiénes Somos — Page Styles ─────────── */
+
+        /* ── Story intro ── */
+        .about-intro {
+            max-width: 760px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 5rem 0 3rem;
+        }
+
+        .about-intro h2 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-black);
+            margin-bottom: 1.2rem;
+        }
+
+        .about-intro p {
+            font-size: 1.1rem;
+            line-height: 1.85;
+            color: var(--color-gray);
+        }
+
+        /* ── Split sections (image + text) ── */
+        .about-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 4rem 0;
+        }
+
+        .about-split.reverse {
+            direction: rtl;
+        }
+
+        .about-split.reverse>* {
+            direction: ltr;
+        }
+
+        .about-split-img {
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .about-split-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 8px;
+            box-shadow: var(--shadow-lg);
+            transition: transform 0.5s ease;
+        }
+
+        .about-split-img:hover img {
+            transform: scale(1.03);
+        }
+
+        .about-split-text h3 {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-black);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .about-split-text p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--color-gray);
+            margin-bottom: 1rem;
+        }
+
+        .about-check-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.2rem 0 0;
+        }
+
+        .about-check-list li {
+            font-size: 1rem;
+            color: var(--color-gray-dark);
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--color-gray-lighter);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .about-check-list li:last-child {
+            border-bottom: none;
+        }
+
+        .about-check-list .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--color-black);
+            flex-shrink: 0;
+        }
+
+        /* ── Values strip — full width dark ── */
+        .values-band {
+            background: linear-gradient(-45deg, #1a1a1a, #666666, #333333, #777777);
+            background-size: 400% 400%;
+            animation: gradientAnimation 5s ease infinite;
+            padding: 5rem 0;
+            margin: 4rem 0;
+        }
+
+        .values-band-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .values-band-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .values-band-header h2 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-white);
+            margin-bottom: 0.6rem;
+        }
+
+        .values-band-header p {
+            font-size: 1rem;
+            color: var(--color-gray-light);
+        }
+
+        .values-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+        }
+
+        .value-cell {
+            padding: 2.5rem 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin: -0.5px;
+            text-align: center;
+            transition: background 0.4s ease;
+        }
+
+        .value-cell:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .value-cell-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+            color: var(--color-white);
+        }
+
+        .value-cell h3 {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--color-white);
+            margin-bottom: 0.6rem;
+        }
+
+        .value-cell p {
+            font-size: 0.92rem;
+            line-height: 1.65;
+            color: var(--color-gray-light);
+        }
+
+        /* ── Founder section ── */
+        .founder-section {
+            padding: 5rem 0;
+            border-top: 1px solid var(--color-gray-lighter);
+        }
+
+        .founder-layout {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+
+        .founder-quote {
+            position: relative;
+            padding: 2.5rem 0 2.5rem 2.5rem;
+            border-left: 3px solid var(--color-black);
+        }
+
+        .founder-quote p {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            font-style: italic;
+            color: var(--color-dark);
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+
+        .founder-signature {
+            display: inline-block;
+        }
+
+        .founder-name {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 2.2rem;
+            color: var(--color-black);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .founder-role {
+            font-family: var(--font-sans);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-gray);
+            border-top: 1px solid var(--color-gray-lighter);
+            padding-top: 0.6rem;
+            display: inline-block;
+        }
+
+        .founder-bio {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .founder-bio p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--color-gray);
+            margin-bottom: 1rem;
+        }
+
+        .founder-bio p strong {
+            color: var(--color-black);
+        }
+
+        /* ── Stats inline ── */
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin: 4rem 0;
+            border-top: 1px solid var(--color-gray-lighter);
+            border-bottom: 1px solid var(--color-gray-lighter);
+        }
+
+        .about-stat {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-right: 1px solid var(--color-gray-lighter);
+            transition: background 0.3s ease;
+        }
+
+        .about-stat:last-child {
+            border-right: none;
+        }
+
+        .about-stat:hover {
+            background: var(--color-gray-lighter);
+        }
+
+        .about-stat-num {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--color-black);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-stat-text {
+            font-size: 0.9rem;
+            color: var(--color-gray);
+            line-height: 1.5;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 1024px) {
+            .values-row {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-split {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .about-split.reverse {
+                direction: ltr;
+            }
+
+            .about-intro h2,
+            .values-band-header h2 {
+                font-size: 2rem;
+            }
+
+            .about-split-text h3 {
+                font-size: 1.6rem;
+            }
+
+            .values-row {
+                grid-template-columns: 1fr;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .about-stat {
+                border-right: none;
+                border-bottom: 1px solid var(--color-gray-lighter);
+                padding: 2rem;
+            }
+
+            .about-stat:last-child {
+                border-bottom: none;
+            }
+
+            .founder-quote {
+                padding: 2rem 0 2rem 1.5rem;
+            }
+
+            .founder-quote p {
+                font-size: 1.3rem;
+            }
+
+            .founder-name {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo-text">
+                    <span class="logo-main">AAE</span>
+                    <span class="logo-sub">Systems</span>
+                    <div class="logo-decoration"><span>❖</span></div>
+                </a>
+            </div>
+            <div class="menu-container">
+                <button class="hamburger-btn" id="menuToggle" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="dropdown-menu" id="dropdownMenu">
+                    <a href="index.html" class="menu-link">Inicio</a>
+                    <a href="about.html" class="menu-link">Quienes somos</a>
+                    <a href="planes.html" class="menu-link">Planes</a>
+                    <a href="beneficios.html" class="menu-link">Nuestros Servicios</a>
+                    <a href="politicas.html" class="menu-link">Políticas</a>
+                    <a href="contacto.html" class="menu-link">Contáctanos</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- HERO -->
+        <section class="hero-section" style="min-height: 50vh;">
+            <div class="hero-card container">
+                <div class="hero-bg"></div>
+                <div class="hero-content">
+                    <span class="badge">QUIÉNES SOMOS</span>
+                    <h1 class="hero-title">Más que Código,<br>Ecosistemas de Crecimiento</h1>
+                    <div class="divider"></div>
+                    <p class="hero-subtitle">La filosofía detrás del crecimiento digital automatizado.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTRO -->
+        <section class="about-intro">
+            <h2>Nuestra Historia</h2>
+            <p>
+                AAE Systems es una agencia especializada en <strong style="color: var(--color-black);">Growth
+                    Automation</strong> para empresas B2B.
+                Nacimos con un propósito claro: diseñar, construir y optimizar la infraestructura digital que permite a
+                los negocios escalar su captación y conversión de clientes de manera automatizada, predecible y
+                sostenible.
+            </p>
+        </section>
+
+        <!-- STATS -->
+        <div class="about-stats">
+            <div class="about-stat">
+                <div class="about-stat-num">6</div>
+                <div class="about-stat-text">Servicios integrados en un solo ecosistema</div>
+            </div>
+            <div class="about-stat">
+                <div class="about-stat-num">24/7</div>
+                <div class="about-stat-text">Operación continua sin intervención manual</div>
+            </div>
+            <div class="about-stat">
+                <div class="about-stat-num">B2B</div>
+                <div class="about-stat-text">Enfoque exclusivo en empresas y negocios</div>
+            </div>
+        </div>
+
+        <!-- SPLIT 1: Enfoque -->
+        <section class="about-split">
+            <div class="about-split-img">
+                <img src="img/crecimiento_growth.png" alt="Crecimiento - Growth Automation">
+            </div>
+            <div class="about-split-text">
+                <h3>Nuestro Enfoque</h3>
+                <p>
+                    Creemos en la ingeniería que trabaja en segundo plano. Un sistema bien diseñado opera de forma
+                    silenciosa y eficiente, liberando a nuestros clientes para que se concentren en lo que realmente
+                    importa: la estrategia y el crecimiento de su negocio.
+                </p>
+                <p>
+                    Nuestra metodología se fundamenta en la construcción de ecosistemas digitales robustos y escalables
+                    — no en soluciones temporales, sino en infraestructura de largo plazo que evoluciona con tu empresa.
+                </p>
+            </div>
+        </section>
+
+        <!-- SPLIT 2: Ahorro de Tiempo -->
+        <section class="about-split reverse">
+            <div class="about-split-img">
+                <img src="img/ahorro_tiempo.jpg" alt="Ahorro de Tiempo - Automatización">
+            </div>
+            <div class="about-split-text">
+                <h3>Ahorro de Tiempo, Resultados Reales</h3>
+                <p>
+                    Cada hora que tu equipo dedica a tareas repetitivas es una hora que no invierte en cerrar ventas o
+                    fortalecer relaciones con clientes. Nuestros sistemas eliminan los procesos manuales que frenan tu
+                    operación.
+                </p>
+                <ul class="about-check-list">
+                    <li><span class="dot"></span>Reducción de hasta un 70% en tareas operativas manuales</li>
+                    <li><span class="dot"></span>Seguimiento automático de prospectos sin intervención humana</li>
+                    <li><span class="dot"></span>Reportes y métricas en tiempo real para decisiones estratégicas</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SPLIT 3: Resultados -->
+        <section class="about-split">
+            <div class="about-split-img">
+                <img src="img/resultados.png" alt="Resultados - Growth Automation">
+            </div>
+            <div class="about-split-text">
+                <h3>Resultados que Hablan</h3>
+                <p>
+                    No prometemos métricas abstractas. Cada sistema que implementamos está diseñado para generar
+                    resultados tangibles y medibles desde el primer mes de operación.
+                </p>
+                <ul class="about-check-list">
+                    <li><span class="dot"></span>Captación constante de prospectos calificados</li>
+                    <li><span class="dot"></span>Incremento medible en conversiones y ventas</li>
+                    <li><span class="dot"></span>Operación escalable sin aumentar costos operativos</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- VALUES BAND — Full Width Dark -->
+    <section class="values-band">
+        <div class="values-band-inner">
+            <div class="values-band-header">
+                <h2>Nuestros Valores</h2>
+                <p>Los principios que guían cada sistema que construimos</p>
+            </div>
+            <div class="values-row">
+                <div class="value-cell">
+                    <span class="value-cell-icon"><i class="ri-focus-2-line"></i></span>
+                    <h3>Precisión Absoluta</h3>
+                    <p>El error humano es costoso. Nuestro código está diseñado para ejecutar con exactitud
+                        milimétrica, siempre.</p>
+                </div>
+                <div class="value-cell">
+                    <span class="value-cell-icon"><i class="ri-shield-check-line"></i></span>
+                    <h3>Transparencia Total</h3>
+                    <p>Sin cajas negras. Construimos sistemas que puedes auditar, entender y, sobre todo, controlar.</p>
+                </div>
+                <div class="value-cell">
+                    <span class="value-cell-icon"><i class="ri-layout-masonry-line"></i></span>
+                    <h3>Estética Funcional</h3>
+                    <p>La belleza no está peleada con la utilidad. Nuestras interfaces son limpias, intuitivas y
+                        elegantes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+
+        <!-- FOUNDER -->
+        <section class="founder-section">
+            <div class="founder-layout">
+                <div class="founder-bio">
+                    <h2
+                        style="font-family: var(--font-serif); font-size: 2.5rem; font-weight: 700; color: var(--color-black); margin-bottom: 1.5rem;">
+                        El Fundador</h2>
+                    <p>
+                        Aaron Ayala fundó AAE Systems después de identificar un patrón recurrente en la industria:
+                        <strong>empresas brillantes con operativas mediocres</strong>.
+                    </p>
+                    <p>
+                        Con un trasfondo en ingeniería y una pasión por el diseño de sistemas complejos, Aaron se dio
+                        cuenta de que la mayoría de los negocios no necesitaban "más software", necesitaban
+                        <strong>mejores flujos de trabajo</strong>.
+                    </p>
+                </div>
+                <div class="founder-quote">
+                    <p>
+                        "Mi objetivo no es solo automatizar una tarea; es rediseñar la forma en que tu empresa respira.
+                        Quiero que cada notificación que recibas sea una venta cerrada o un problema resuelto, no una
+                        distracción."
+                    </p>
+                    <div class="founder-signature">
+                        <div class="founder-name">Aaron Ayala</div>
+                        <div class="founder-role">CEO, AAE Systems</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="contact-section">
+            <div class="contact-content">
+                <h3>¿Listo para conocer lo que podemos hacer por ti?</h3>
+                <p>
+                    Agenda un diagnóstico estratégico y descubre cómo transformar tu operación con infraestructura
+                    digital inteligente.
+                </p>
+                <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="contacto.html" class="btn-primary"
+                        style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">
+                        Agendar Diagnóstico Gratuito
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                    <a href="beneficios.html" class="btn-secondary"
+                        style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; color: var(--color-black); border-color: var(--color-black);">
+                        Ver Nuestros Servicios
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="index.html" class="logo-text logo-white">
+                    <span class="logo-main">AAE</span>
+                    <span class="logo-sub">Systems</span>
+                    <div class="logo-decoration"><span>❖</span></div>
+                </a>
+            </div>
+            <p class="footer-slogan">GROWTH AUTOMATION · WEB · REDES · EMAIL · SOFTWARE · LEADS</p>
+
+            <div class="footer-links">
+                <a href="index.html">Inicio</a>
+                <a href="about.html">Quienes somos</a>
+                <a href="planes.html">Planes</a>
+                <a href="beneficios.html">Nuestros Servicios</a>
+                <a href="politicas.html">Políticas</a>
+                <a href="contacto.html">Contáctanos</a>
+            </div>
+
+            <div class="footer-social">
+                <a href="https://wa.me/5217341271314" target="_blank" aria-label="WhatsApp"><i
+                        class="ri-whatsapp-fill"></i></a>
+                <a href="https://www.instagram.com/aaesystems.mx/" target="_blank" aria-label="Instagram"><i
+                        class="ri-instagram-fill"></i></a>
+                <a href="https://www.linkedin.com/in/aae-systems-1484563b2/" target="_blank" aria-label="LinkedIn"><i
+                        class="ri-linkedin-fill"></i></a>
+            </div>
+
+            <p class="copyright">© 2026 AAE Systems. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js?v=1.3"></script>
+</body>
+
+</html>
