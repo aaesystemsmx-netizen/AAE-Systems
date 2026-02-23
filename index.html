@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AAE Systems | Growth Automation para Empresas</title>
+    <meta name="description"
+        content="AAE Systems es una agencia de Growth Automation que diseña infraestructura digital para captar, convertir y escalar ventas de forma automatizada.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png?v=2">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo-text">
+                    <span class="logo-main">AAE</span>
+                    <span class="logo-sub">Systems</span>
+                    <div class="logo-decoration"><span>❖</span></div>
+                </a>
+            </div>
+            <div class="menu-container">
+                <button class="hamburger-btn" id="menuToggle" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="dropdown-menu" id="dropdownMenu">
+                    <a href="index.html" class="menu-link">Inicio</a>
+                    <a href="about.html" class="menu-link">Quienes somos</a>
+                    <a href="planes.html" class="menu-link">Planes</a>
+                    <a href="beneficios.html" class="menu-link">Nuestros Servicios</a>
+                    <a href="politicas.html" class="menu-link">Políticas</a>
+                    <a href="contacto.html" class="menu-link">Contáctanos</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- HERO SECTION -->
+        <section id="home" class="hero-section">
+            <div class="hero-card container carousel-container">
+                <div class="hero-bg"></div>
+
+                <!-- Slide 1: Growth Automation -->
+                <div class="carousel-slide active" data-index="0">
+                    <div class="hero-content">
+                        <span class="badge">GROWTH AUTOMATION B2B</span>
+                        <h1 class="hero-title">
+                            Construimos la infraestructura digital<br>
+                            que hace crecer tu negocio
+                        </h1>
+                        <div class="divider"></div>
+                        <p class="hero-subtitle">
+                            Desde sitios web estratégicos hasta software personalizado con IA: diseñamos, automatizamos
+                            y escalamos los sistemas digitales que convierten prospectos en clientes, sin trabajo
+                            manual.
+                        </p>
+                        <div class="hero-actions">
+                            <a href="contacto.html" class="btn-primary">
+                                Agendar Diagnóstico Estratégico
+                                <i class="ri-arrow-right-line"></i>
+                            </a>
+                            <a href="beneficios.html" class="btn-secondary">
+                                Ver Cómo Funciona
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2: Nuestros Servicios -->
+                <div class="carousel-slide" data-index="1">
+                    <div class="hero-content">
+                        <span class="badge">NUESTROS SERVICIOS</span>
+                        <h1 class="hero-title">
+                            Elevamos los estándares de<br>
+                            tu operación digital
+                        </h1>
+                        <div class="divider"></div>
+                        <p class="hero-subtitle">
+                            Automatización de redes, email marketing avanzado y desarrollo a medida. Integramos las
+                            herramientas que tu equipo necesita para ser 10 veces más productivo.
+                        </p>
+                        <div class="hero-actions">
+                            <a href="planes.html" class="btn-primary">
+                                Explorar Planes
+                                <i class="ri-rocket-line"></i>
+                            </a>
+                            <a href="beneficios.html" class="btn-secondary">
+                                Ver Catálogo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3: Quiénes Somos -->
+                <div class="carousel-slide" data-index="2">
+                    <div class="hero-content">
+                        <span class="badge">QUÉ NOS DEFINE</span>
+                        <h1 class="hero-title">
+                            Arquitectos de sistemas que<br>
+                            entregan resultados reales
+                        </h1>
+                        <div class="divider"></div>
+                        <p class="hero-subtitle">
+                            No solo programamos; diseñamos estrategias de crecimiento. Nuestra metodología se basa en la
+                            eficiencia, el retorno de inversión y la innovación tecnológica.
+                        </p>
+                        <div class="hero-actions">
+                            <a href="about.html" class="btn-primary">
+                                Nuestra Filosofía
+                                <i class="ri-team-line"></i>
+                            </a>
+                            <a href="contacto.html" class="btn-secondary">
+                                Habla con un Experto
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carousel Navigation Dots -->
+                <div class="carousel-dots">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                    <span class="dot" data-index="2"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT TEASER -->
+        <section class="about-teaser-section container">
+            <a href="about.html" class="teaser-card">
+                <div class="teaser-image">
+                    <span class="teaser-icon">❖</span>
+                </div>
+                <div class="teaser-content">
+                    <span class="teaser-label">Nuestra Metodología</span>
+                    <h3>Infraestructura de Crecimiento</h3>
+                    <div class="teaser-link-text">Descubrir enfoque estratégico →</div>
+                </div>
+            </a>
+        </section>
+
+        <!-- SERVICES SECTION -->
+        <section id="services" class="services-section container">
+            <div class="section-header">
+                <h2>Nuestros Servicios</h2>
+                <a href="planes.html" class="link-view-all">Ver planes y precios →</a>
+            </div>
+            <div class="services-grid">
+
+                <div class="service-card">
+                    <div class="card-overlay"></div>
+                    <div class="card-icon"><i class="ri-global-line" style="color: #38bdf8;"></i></div>
+                    <h3 class="card-title">Desarrollo Web Estratégico</h3>
+                    <p class="card-description">
+                        Sitios web profesionales, responsivos y optimizados para conversión, conectados a bases de datos
+                        y herramientas de automatización.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="card-overlay"></div>
+                    <div class="card-icon"><i class="ri-settings-3-line" style="color: #60a5fa;"></i></div>
+                    <h3 class="card-title">Automatización de Procesos</h3>
+                    <p class="card-description">
+                        Flujos automatizados que eliminan tareas repetitivas, conectan tus herramientas y operan 24/7
+                        sin intervención manual.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="card-overlay"></div>
+                    <div class="card-icon"><i class="ri-share-forward-line" style="color: #a78bfa;"></i></div>
+                    <h3 class="card-title">Automatización de Redes Sociales</h3>
+                    <p class="card-description">
+                        Respuestas automáticas, captura de prospectos y flujos de seguimiento integrados en WhatsApp,
+                        Instagram y más.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="card-overlay"></div>
+                    <div class="card-icon"><i class="ri-mail-send-line" style="color: #f472b6;"></i></div>
+                    <h3 class="card-title">Email Marketing con Diseño HTML</h3>
+                    <p class="card-description">
+                        Secuencias de email automatizadas con diseño HTML profesional que nutren leads y generan ventas
+                        recurrentes.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="card-overlay"></div>
+                    <div class="card-icon"><i class="ri-pie-chart-line" style="color: #fb923c;"></i></div>
+                    <h3 class="card-title">Gestión de DB y Clasificación de Leads</h3>
+                    <p class="card-description">
+                        Bases de datos estructuradas con scoring y clasificación automática de prospectos para maximizar
+                        tu tasa de conversión.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="card-overlay"></div>
+                    <div class="card-icon"><i class="ri-code-s-slash-line" style="color: #34d399;"></i></div>
+                    <h3 class="card-title">Desarrollo de Software Personalizado</h3>
+                    <p class="card-description">
+                        Creamos herramientas digitales a medida con IA integrada: paneles internos, dashboards y
+                        sistemas adaptados a tu negocio.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- STATS SECTION -->
+        <section id="stats" class="stats-section"
+            style="background: linear-gradient(-45deg, #1a1a1a, #666666, #333333, #777777); background-size: 400% 400%; animation: gradientAnimation 5s ease infinite; padding: 5rem 0;">
+            <div class="stats-content container" style="background: transparent; padding: 0 20px; max-width: 1200px;">
+                <h3 style="color: var(--color-white);">Resultados Medibles</h3>
+                <p style="color: var(--color-gray-light);">Las empresas que implementan nuestra infraestructura digital
+                    experimentan mejoras reales en captación, conversión y eficiencia operativa.</p>
+                <div class="stats-grid"
+                    style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 3rem; margin-top: 2rem;">
+
+                    <div class="stat-item" style="position: relative;">
+                        <div class="stat-number" style="color: var(--color-white);">6</div>
+                        <div class="stat-label" style="color: var(--color-gray-light);">Servicios integrados en un solo
+                            ecosistema digital</div>
+                    </div>
+
+                    <div class="stat-item"
+                        style="border-left: 1px solid rgba(255,255,255,0.1); border-right: 1px solid rgba(255,255,255,0.1); padding: 0 2rem;">
+                        <div class="stat-number" style="color: var(--color-white);">24/7</div>
+                        <div class="stat-label" style="color: var(--color-gray-light);">Operación continua sin
+                            intervención manual</div>
+                    </div>
+
+                    <div class="stat-item">
+                        <div class="stat-number" style="color: var(--color-white); font-size: 2.4rem;">ROI Positivo
+                        </div>
+                        <div class="stat-label" style="color: var(--color-gray-light);">En los primeros 90 días de
+                            implementación</div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contacto" class="contact-section">
+            <div class="contact-container">
+                <div class="contact-form-wrapper">
+                    <h3>¿Listo para automatizar?</h3>
+                    <p>Completa el formulario y un estratega de AAE Systems analizará tu caso antes de nuestra primera
+                        llamada.</p>
+
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nombre Completo</label>
+                            <input type="text" id="name" placeholder="Ej. Juan Pérez" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail Corporativo</label>
+                            <input type="email" id="email" placeholder="nombre@empresa.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">WhatsApp / Teléfono</label>
+                            <input type="tel" id="phone" placeholder="+52 ...">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Sobre tu proyecto</label>
+                            <textarea id="message" placeholder="¿Qué procesos te gustaría automatizar hoy?" rows="4"
+                                required></textarea>
+                        </div>
+                        <button type="submit" id="submitBtn">Enviar Solicitud de Consulta</button>
+                    </form>
+                </div>
+
+                <div class="contact-sidebar">
+                    <div class="sidebar-item">
+                        <i class="ri-flashlight-line"></i>
+                        <h4>Respuesta en &lt;24h</h4>
+                        <p>Nuestro equipo estratégico analiza cada solicitud minuciosamente para contactarte el mismo
+                            día.</p>
+                    </div>
+                    <div class="sidebar-item">
+                        <i class="ri-shield-star-line"></i>
+                        <h4>Enfoque Proactivo</h4>
+                        <p>Diseñamos sistemas que no solo resuelven problemas, sino que crean nuevas oportunidades de
+                            ingresos.</p>
+                    </div>
+                    <div class="sidebar-item">
+                        <i class="ri-global-line"></i>
+                        <h4>Ecosistema de IA</h4>
+                        <p>Soluciones integrales diseñadas para empresas que buscan liderar la automatización en su
+                            sector.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="index.html" class="logo-text logo-white">
+                    <span class="logo-main">AAE</span>
+                    <span class="logo-sub">Systems</span>
+                    <div class="logo-decoration"><span>❖</span></div>
+                </a>
+            </div>
+
+            <p class="footer-slogan">GROWTH AUTOMATION · WEB · REDES · EMAIL · SOFTWARE · LEADS</p>
+
+            <div class="footer-links">
+                <a href="index.html">Inicio</a>
+                <a href="about.html">Quienes somos</a>
+                <a href="planes.html">Planes</a>
+                <a href="beneficios.html">Nuestros Servicios</a>
+                <a href="politicas.html">Políticas</a>
+                <a href="contacto.html">Contáctanos</a>
+            </div>
+
+            <div class="footer-social">
+                <a href="https://wa.me/5217341271314" target="_blank" aria-label="WhatsApp"><i
+                        class="ri-whatsapp-fill"></i></a>
+                <a href="https://www.instagram.com/aaesystems.mx/" target="_blank" aria-label="Instagram"><i
+                        class="ri-instagram-fill"></i></a>
+                <a href="https://www.linkedin.com/in/aae-systems-1484563b2/" target="_blank" aria-label="LinkedIn"><i
+                        class="ri-linkedin-fill"></i></a>
+            </div>
+
+            <p class="copyright">© 2026 AAE Systems. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js?v=1.3"></script>
+</body>
+
+</html>
