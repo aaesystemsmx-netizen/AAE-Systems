@@ -362,7 +362,7 @@ body {
 }
 
 .carousel-slide-1 {
-    background-image: url('hero_infrastructure.jpg');
+    background-image: url('img/hero_infrastructure.jpg');
     background-position: right center;
     justify-content: flex-start;
     image-rendering: -webkit-optimize-contrast;
@@ -1982,3 +1982,4 @@ body {
     margin: 20px auto;
 
 }
+
