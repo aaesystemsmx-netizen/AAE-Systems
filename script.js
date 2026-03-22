@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Form Submission to n8n Webhook
+      // Form Submission to n8n Webhook
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', function (e) {
@@ -149,5 +149,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
         });
     }
+
+    /* ==================== COOKIE BANNER ==================== */
+    const banner = document.getElementById("cookie-banner");
+    const acceptBtn = document.getElementById("accept-cookies");
+    const rejectBtn = document.getElementById("reject-cookies");
+
+    if (banner && acceptBtn && rejectBtn) {
+        const consent = localStorage.getItem("cookie-consent");
+
+        if (!consent) {
+            banner.style.display = "block";
+        }
+
+        acceptBtn.addEventListener("click", () => {
+            localStorage.setItem("cookie-consent", "accepted");
+            banner.style.display = "none";
+        });
+
+        rejectBtn.addEventListener("click", () => {
+            localStorage.setItem("cookie-consent", "rejected");
+            banner.style.display = "none";
+        });
+    }
+
+});
+    
 });
 
