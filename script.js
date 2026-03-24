@@ -1,4 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // ==================== THEME TOGGLE ====================
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+
+    // Apply saved theme on load
+    const savedTheme = localStorage.getItem('aae-theme') || 'light';
+    html.setAttribute('data-theme', savedTheme);
+    updateToggleLabel(savedTheme);
+
+    function updateToggleLabel(theme) {
+        if (!themeToggle) return;
+        const label = themeToggle.querySelector('.toggle-label');
+        if (label) {
+            const icon = label.querySelector('i');
+            if (theme === 'dark') {
+                if (icon) icon.className = 'ri-sun-line';
+                label.lastChild.textContent = ' Modo Claro';
+            } else {
+                if (icon) icon.className = 'ri-contrast-2-line';
+                label.lastChild.textContent = ' Modo Oscuro';
+            }
+        }
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const current = html.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('aae-theme', next);
+            updateToggleLabel(next);
+        });
+    }
+
     // Menu Toggle Functionality
     const menuToggle = document.getElementById('menuToggle');
     const dropdownMenu = document.getElementById('dropdownMenu');
@@ -11,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
             dropdownMenu.classList.toggle('active');
         });
 
-        // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!menuToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
                 menuToggle.classList.remove('active');
@@ -19,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Close menu when clicking a link
         menuLinks.forEach(link => {
             link.addEventListener('click', () => {
                 menuToggle.classList.remove('active');
@@ -28,32 +60,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Smooth Scrolling for Menu Links
+    // Smooth Scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 const headerOffset = 100;
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
             }
         });
     });
 
-    // Scroll Animation for Services Cards
-    const observerOptions = {
-        threshold: 0.1
-    };
-
+    // Scroll Animation for Service Cards
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -61,18 +84,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 entry.target.style.transform = 'translateY(0)';
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.1 });
 
-    // Aplicar animación inicial a cards
-    const cards = document.querySelectorAll('.service-card');
-    cards.forEach((card, index) => {
+    document.querySelectorAll('.service-card').forEach((card, index) => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(20px)';
         card.style.transition = `all 0.6s ease ${index * 0.1}s`;
         observer.observe(card);
     });
 
-    // Hero Carousel Logic
+    // Hero Carousel
     const carouselSlides = document.querySelectorAll('.carousel-slide');
     const carouselDots = document.querySelectorAll('.dot');
     let currentSlide = 0;
@@ -81,43 +102,35 @@ document.addEventListener('DOMContentLoaded', () => {
     function showSlide(index) {
         carouselSlides.forEach(slide => slide.classList.remove('active'));
         carouselDots.forEach(dot => dot.classList.remove('active'));
-
         carouselSlides[index].classList.add('active');
         carouselDots[index].classList.add('active');
         currentSlide = index;
     }
 
-    function nextSlide() {
-        let index = (currentSlide + 1) % carouselSlides.length;
-        showSlide(index);
-    }
-
     function startCarousel() {
         if (carouselSlides.length > 0) {
-            carouselInterval = setInterval(nextSlide, 5000);
+            carouselInterval = setInterval(() => {
+                showSlide((currentSlide + 1) % carouselSlides.length);
+            }, 5000);
         }
     }
 
     if (carouselSlides.length > 0) {
-        // Initial start
         startCarousel();
-
-        // Dot navigation
         carouselDots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
                 clearInterval(carouselInterval);
                 showSlide(index);
-                startCarousel(); // Restart interval after manual click
+                startCarousel();
             });
         });
     }
 
-      // Form Submission to n8n Webhook
+    // Contact Form → n8n Webhook
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
-
             const submitBtn = document.getElementById('submitBtn');
             const originalBtnText = submitBtn.innerText;
             submitBtn.innerText = 'Enviando...';
@@ -130,49 +143,23 @@ document.addEventListener('DOMContentLoaded', () => {
             formData.append('message', document.getElementById('message').value);
             formData.append('source', 'aae_website_contact');
 
-            fetch('https://aaesystems23.app.n8n.cloud/webhook/91a5a0e5-9d08-4516-8465-23036f7f969d', {
+            fetch('https://purefocus04.app.n8n.cloud/webhook/31c786a4-60ba-4c29-a375-2a59869de2c9', {
                 method: 'POST',
                 body: formData,
                 mode: 'no-cors'
             })
-                .then(() => {
-                    contactForm.reset();
-                    window.location.href = '/solicitud_enviada_correctamente/';
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Hubo un error al intentar enviar el mensaje. Por favor intenta de nuevo.');
-                })
-                .finally(() => {
-                    submitBtn.innerText = originalBtnText;
-                    submitBtn.disabled = false;
-                });
+            .then(() => {
+                contactForm.reset();
+                window.location.href = 'gracias.html';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Hubo un error al enviar. Por favor intenta de nuevo.');
+            })
+            .finally(() => {
+                submitBtn.innerText = originalBtnText;
+                submitBtn.disabled = false;
+            });
         });
     }
-
-    /* ==================== COOKIE BANNER ==================== */
-    const banner = document.getElementById("cookie-banner");
-    const acceptBtn = document.getElementById("accept-cookies");
-    const rejectBtn = document.getElementById("reject-cookies");
-
-    if (banner && acceptBtn && rejectBtn) {
-        const consent = localStorage.getItem("cookie-consent");
-
-        if (!consent) {
-            banner.style.display = "block";
-        }
-
-        acceptBtn.addEventListener("click", () => {
-            localStorage.setItem("cookie-consent", "accepted");
-            banner.style.display = "none";
-        });
-
-        rejectBtn.addEventListener("click", () => {
-            localStorage.setItem("cookie-consent", "rejected");
-            banner.style.display = "none";
-        });
-    }
-
 });
-    
-
