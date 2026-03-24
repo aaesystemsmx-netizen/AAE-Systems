@@ -106,67 +106,89 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(card);
     });
 
-    // Hero Carousel Logic
+    // Hero Carousel Component
     const carouselSlides = document.querySelectorAll('.carousel-slide');
     const carouselTrack = document.querySelector('.carousel-track');
     const carouselDots = document.querySelectorAll('.dot');
-    let currentSlide = 1; // Start at Slide 1 (Track index 1)
+    const prevBtn = document.querySelector('.carousel-nav.prev');
+    const nextBtn = document.querySelector('.carousel-nav.next');
+    
+    let currentSlide = 1; 
     let carouselInterval;
-    let isTransitioning = false; // Guard for rapid clicks
+    let isTransitioning = false;
 
     function showSlide(index, animate = true) {
         if (!carouselTrack || (animate && isTransitioning)) return;
-        
         if (animate) isTransitioning = true;
-        carouselTrack.style.transition = animate ? 'transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1)' : 'none';
         
+        carouselTrack.style.transition = animate ? 'transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1)' : 'none';
         const slideWidthPercent = window.innerWidth <= 768 ? 95 : 90;
         const offsetPercent = window.innerWidth <= 768 ? 2.5 : 5;
         
         carouselTrack.style.transform = `translate3d(calc(${offsetPercent}% - ${index} * ${slideWidthPercent}%), 0, 0)`;
 
-        // Update dots (Slides 1, 2, 3 are track indices 1, 2, 3)
         let dotIndex = index - 1;
-        if (index === 0) dotIndex = 2; // Clone of S3
-        if (index === 4) dotIndex = 0; // Clone of S1
+        if (index === 0) dotIndex = 2;
+        if (index === 4) dotIndex = 0;
         
         carouselDots.forEach(dot => dot.classList.remove('active'));
         if (carouselDots[dotIndex]) carouselDots[dotIndex].classList.add('active');
         currentSlide = index;
     }
 
-    // Seamless Jump Logic
     if (carouselTrack) {
         carouselTrack.addEventListener('transitionend', () => {
             isTransitioning = false;
-            if (currentSlide === 0) {
-                showSlide(3, false); // Jump to real S3
-            } else if (currentSlide === 4) {
-                showSlide(1, false); // Jump to real S1
-            }
+            if (currentSlide === 0) showSlide(3, false);
+            if (currentSlide === 4) showSlide(1, false);
         });
     }
 
     function startCarousel() {
         if (carouselSlides.length > 0) {
             carouselInterval = setInterval(() => {
-                if (currentSlide < 4) {
-                    showSlide(currentSlide + 1);
+                if (!isTransitioning) {
+                    if (currentSlide < 4) showSlide(currentSlide + 1);
+                    else showSlide(1, false);
                 }
-            }, 5000);
+            }, 10000);
         }
+    }
+
+    function resetAutoPlay() {
+        clearInterval(carouselInterval);
+        startCarousel();
     }
 
     if (carouselSlides.length > 0) {
         startCarousel();
-        carouselDots.forEach((dot, dotIndex) => {
+        
+        // Unified "Hierarchy" Listeners
+        carouselDots.forEach((dot, i) => {
             dot.addEventListener('click', () => {
-                if (isTransitioning || dotIndex + 1 === currentSlide) return;
-                clearInterval(carouselInterval);
-                showSlide(dotIndex + 1);
-                startCarousel();
+                if (isTransitioning || i + 1 === currentSlide) return;
+                resetAutoPlay();
+                showSlide(i + 1);
             });
         });
+
+        if (prevBtn && nextBtn) {
+            prevBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (isTransitioning) return;
+                resetAutoPlay();
+                if (currentSlide > 0) showSlide(currentSlide - 1);
+                else showSlide(3, false); // Safety jump if somehow stuck at 0
+            });
+
+            nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (isTransitioning) return;
+                resetAutoPlay();
+                if (currentSlide < 4) showSlide(currentSlide + 1);
+                else showSlide(1, false); // Safety jump if somehow stuck at 4
+            });
+        }
     }
 
     // Form Submission to n8n Webhook
@@ -247,13 +269,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const handleDragStart = (e) => {
             if (isTransitioning) return;
+            // Prevent interference with buttons/dots
+            if (e.target.closest('.carousel-nav') || e.target.closest('.dot')) return;
+
             if (e.type === 'mousedown') e.preventDefault(); 
             
             // Invisible Snap - Move user from clones to real slides before drag begins
             if (currentSlide === 0) showSlide(3, false);
             if (currentSlide === 4) showSlide(1, false);
 
-            clearInterval(carouselInterval);
+            resetAutoPlay();
             startX = getX(e);
             startY = getY(e);
             isDragging = true;
@@ -307,7 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 showSlide(currentSlide);
             }
             
-            startCarousel();
+            resetAutoPlay();
             dragDistance = 0;
         };
 
@@ -320,27 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
         carouselContainer.addEventListener('touchend', handleDragEnd);
     }
 
-    // --- Hero Carousel Arrow Navigation ---
-    const prevBtn = document.querySelector('.carousel-nav.prev');
-    const nextBtn = document.querySelector('.carousel-nav.next');
-
-    if (prevBtn && nextBtn) {
-        prevBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (isTransitioning || currentSlide <= 0) return;
-            clearInterval(carouselInterval);
-            showSlide(currentSlide - 1);
-            startCarousel();
-        });
-
-        nextBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (isTransitioning || currentSlide >= 4) return;
-            clearInterval(carouselInterval);
-            showSlide(currentSlide + 1);
-            startCarousel();
-        });
-    }
+    // --- Responsive Re-Snap ---
 
     // --- Responsive Re-Snap ---
     window.addEventListener('resize', () => {
@@ -348,4 +353,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
-
