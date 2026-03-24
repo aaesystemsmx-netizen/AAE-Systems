@@ -2419,18 +2419,26 @@ body {
     .btn-accept, .btn-reject { flex: 1; }
 }
 
-/* Dark mode override */
+/* Dark mode overrides para secciones que son SIEMPRE oscuras */
+[data-theme="dark"] .hero-title,
+[data-theme="dark"] .hero-subtitle,
+[data-theme="dark"] .badge,
+[data-theme="dark"] .cookie-content p {
+    color: #f5f5f7 !important;
+}
+
 [data-theme="dark"] .cookie-banner {
-    background: rgba(28, 28, 30, 0.85);
-    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(28, 28, 30, 0.92);
+    border-color: rgba(255, 255, 255, 0.12);
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 1px 1px rgba(255, 255, 255, 0.05) inset;
 }
-[data-theme="dark"] .cookie-banner p { color: #aeaeb2; }
+
 [data-theme="dark"] .btn-reject {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(255, 255, 255, 0.1);
     color: #8e8e93;
 }
+
 [data-theme="dark"] .btn-reject:hover {
     background: rgba(255, 255, 255, 0.12);
     color: #f5f5f7;
