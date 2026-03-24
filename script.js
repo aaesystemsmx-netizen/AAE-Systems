@@ -1,15 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // ==================== THEME TOGGLE ====================
+    // ==================== 1. TEMA Y MODO OSCURO ====================
     const themeToggle = document.getElementById('themeToggle');
     const html = document.documentElement;
 
-    // Apply saved theme on load
     const savedTheme = localStorage.getItem('aae-theme') || 'light';
     html.setAttribute('data-theme', savedTheme);
-    updateToggleLabel(savedTheme);
+    if (themeToggle) updateToggleLabel(savedTheme);
 
     function updateToggleLabel(theme) {
-        if (!themeToggle) return;
         const label = themeToggle.querySelector('.toggle-label');
         if (label) {
             const icon = label.querySelector('i');
@@ -33,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Menu Toggle Functionality
+    // ==================== 2. MENÚ DESPLEGABLE ====================
     const menuToggle = document.getElementById('menuToggle');
     const dropdownMenu = document.getElementById('dropdownMenu');
     const menuLinks = document.querySelectorAll('.menu-link');
@@ -60,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Smooth Scrolling
+    // ==================== 3. NAVEGACIÓN Y ANIMACIONES ====================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -76,7 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Scroll Animation for Service Cards
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -88,100 +85,160 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.service-card').forEach((card, index) => {
         card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
         card.style.transition = `all 0.6s ease ${index * 0.1}s`;
         observer.observe(card);
     });
 
-    // Hero Carousel
-    const carouselSlides = document.querySelectorAll('.carousel-slide');
+    // ==================== 4. MOTOR AVANZADO DEL CARRUSEL ====================
+    const carouselTrack = document.querySelector('.carousel-track');
     const carouselDots = document.querySelectorAll('.dot');
-    let currentSlide = 0;
+    const carouselSlides = document.querySelectorAll('.carousel-slide');
+    let currentSlide = 1; // Empezamos en la real diapositiva 1
+    let isTransitioning = false;
     let carouselInterval;
 
-    function showSlide(index) {
-        carouselSlides.forEach(slide => slide.classList.remove('active'));
+    function showSlide(index, animate = true) {
+        if (!carouselTrack || (animate && isTransitioning)) return;
+        if (animate) isTransitioning = true;
+        
+        carouselTrack.style.transition = animate ? 'transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1)' : 'none';
+        
+        const slideWidth = window.innerWidth <= 768 ? 95 : 90;
+        const offset = window.innerWidth <= 768 ? 2.5 : 5;
+        
+        carouselTrack.style.transform = `translate3d(calc(${offset}% - ${index} * ${slideWidth}%), 0, 0)`;
+
+        // Actualizar Dots
+        let dotIndex = index - 1;
+        if (index === 0) dotIndex = 2;
+        if (index === 4) dotIndex = 0;
+        
         carouselDots.forEach(dot => dot.classList.remove('active'));
-        carouselSlides[index].classList.add('active');
-        carouselDots[index].classList.add('active');
+        if (carouselDots[dotIndex]) carouselDots[dotIndex].classList.add('active');
+        
         currentSlide = index;
     }
 
+    // Salto Invisible para Bucle Infinito
+    if (carouselTrack) {
+        carouselTrack.addEventListener('transitionend', () => {
+            isTransitioning = false;
+            if (currentSlide === 0) showSlide(3, false);
+            if (currentSlide === 4) showSlide(1, false);
+        });
+    }
+
     function startCarousel() {
-        if (carouselSlides.length > 0) {
-            carouselInterval = setInterval(() => {
-                showSlide((currentSlide + 1) % carouselSlides.length);
-            }, 5000);
-        }
+        carouselInterval = setInterval(() => {
+            if (currentSlide < 4) showSlide(currentSlide + 1);
+        }, 5000);
     }
 
     if (carouselSlides.length > 0) {
         startCarousel();
-        carouselDots.forEach((dot, index) => {
+        // Flechas
+        const prevBtn = document.querySelector('.carousel-nav.prev');
+        const nextBtn = document.querySelector('.carousel-nav.next');
+
+        if (prevBtn) prevBtn.addEventListener('click', () => {
+            if (isTransitioning || currentSlide <= 0) return;
+            clearInterval(carouselInterval);
+            showSlide(currentSlide - 1);
+            startCarousel();
+        });
+
+        if (nextBtn) nextBtn.addEventListener('click', () => {
+            if (isTransitioning || currentSlide >= 4) return;
+            clearInterval(carouselInterval);
+            showSlide(currentSlide + 1);
+            startCarousel();
+        });
+
+        carouselDots.forEach((dot, i) => {
             dot.addEventListener('click', () => {
+                if (isTransitioning || i + 1 === currentSlide) return;
                 clearInterval(carouselInterval);
-                showSlide(index);
+                showSlide(i + 1);
                 startCarousel();
             });
         });
     }
 
-    // Contact Form → n8n Webhook
-    const contactForm = document.getElementById('contactForm');
+    // ==================== 5. DRAG & TOUCH (1:1) ====================
+    let isDragging = false, startX = 0, dragDist = 0;
+    const container = document.querySelector('.carousel-container');
+
+    if (container) {
+        const handleStart = (e) => {
+            if (isTransitioning) return;
+            if (currentSlide === 0) showSlide(3, false);
+            if (currentSlide === 4) showSlide(1, false);
+            clearInterval(carouselInterval);
+            isDragging = true;
+            startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+            container.classList.add('no-transition');
+        };
+
+        const handleMove = (e) => {
+            if (!isDragging) return;
+            const x = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+            dragDist = x - startX;
+            const slideWidth = window.innerWidth <= 768 ? 95 : 90;
+            const offset = window.innerWidth <= 768 ? 2.5 : 5;
+            carouselTrack.style.transform = `translate3d(calc(${offset}% - ${currentSlide} * ${slideWidth}% + ${dragDist}px), 0, 0)`;
+        };
+
+        const handleEnd = () => {
+            if (!isDragging) return;
+            isDragging = false;
+            container.classList.remove('no-transition');
+            if (Math.abs(dragDist) > 80) {
+                dragDist > 0 ? showSlide(currentSlide - 1) : showSlide(currentSlide + 1);
+            } else {
+                showSlide(currentSlide);
+            }
+            startCarousel();
+        };
+
+        container.addEventListener('mousedown', handleStart);
+        window.addEventListener('mousemove', handleMove);
+        window.addEventListener('mouseup', handleEnd);
+        container.addEventListener('touchstart', handleStart, {passive: true});
+        container.addEventListener('touchmove', handleMove, {passive: true});
+        container.addEventListener('touchend', handleEnd);
+    }
+
+    window.addEventListener('resize', () => showSlide(currentSlide, false));
+
+    // ==================== 6. FORMULARIO Y COOKIES ====================
     if (contactForm) {
         contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
             const submitBtn = document.getElementById('submitBtn');
-            const originalBtnText = submitBtn.innerText;
             submitBtn.innerText = 'Enviando...';
             submitBtn.disabled = true;
 
-            const formData = new URLSearchParams();
-            formData.append('name', document.getElementById('name').value);
-            formData.append('email', document.getElementById('email').value);
-            formData.append('phone', document.getElementById('phone').value);
-            formData.append('message', document.getElementById('message').value);
+            const formData = new URLSearchParams(new FormData(contactForm));
             formData.append('source', 'aae_website_contact');
 
             fetch('https://purefocus04.app.n8n.cloud/webhook/31c786a4-60ba-4c29-a375-2a59869de2c9', {
                 method: 'POST',
                 body: formData,
                 mode: 'no-cors'
-            })
-            .then(() => {
-                contactForm.reset();
+            }).then(() => {
                 window.location.href = 'gracias.html';
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Hubo un error al enviar. Por favor intenta de nuevo.');
-            })
-            .finally(() => {
-                submitBtn.innerText = originalBtnText;
+            }).finally(() => {
+                submitBtn.innerText = 'Enviar Solicitud';
                 submitBtn.disabled = false;
             });
         });
     }
 
-    // --- Cookie Banner Logic ---
     const cookieBanner = document.getElementById('cookie-banner');
-    const acceptBtn = document.getElementById('accept-cookies');
-    const rejectBtn = document.getElementById('reject-cookies');
-
-    if (cookieBanner && acceptBtn && rejectBtn) {
-        const consent = localStorage.getItem('aae-cookie-consent');
-        if (!consent) {
-            // Se muestra con un retraso de 2 segundos para mejor UX
-            setTimeout(() => {
-                cookieBanner.classList.add('show');
-            }, 2000);
-        }
-        acceptBtn.addEventListener('click', () => {
+    if (cookieBanner && !localStorage.getItem('aae-cookie-consent')) {
+        setTimeout(() => cookieBanner.classList.add('show'), 2000);
+        document.getElementById('accept-cookies').addEventListener('click', () => {
             localStorage.setItem('aae-cookie-consent', 'accepted');
-            cookieBanner.classList.remove('show');
-        });
-        rejectBtn.addEventListener('click', () => {
-            localStorage.setItem('aae-cookie-consent', 'rejected');
             cookieBanner.classList.remove('show');
         });
     }
