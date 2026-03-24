@@ -5,9 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const savedTheme = localStorage.getItem('aae-theme') || 'light';
     html.setAttribute('data-theme', savedTheme);
-    if (themeToggle) updateToggleLabel(savedTheme);
+    updateToggleLabel(savedTheme);
 
     function updateToggleLabel(theme) {
+        if (!themeToggle) return;
         const label = themeToggle.querySelector('.toggle-label');
         if (label) {
             const icon = label.querySelector('i');
@@ -85,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.service-card').forEach((card, index) => {
         card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
         card.style.transition = `all 0.6s ease ${index * 0.1}s`;
         observer.observe(card);
     });
@@ -93,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const carouselTrack = document.querySelector('.carousel-track');
     const carouselDots = document.querySelectorAll('.dot');
     const carouselSlides = document.querySelectorAll('.carousel-slide');
-    let currentSlide = 1; // Empezamos en la real diapositiva 1
+    let currentSlide = 1; // Empezamos en la real diapositiva 1 (índice de pista 1)
     let isTransitioning = false;
     let carouselInterval;
 
@@ -103,26 +105,27 @@ document.addEventListener('DOMContentLoaded', () => {
         
         carouselTrack.style.transition = animate ? 'transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1)' : 'none';
         
-        const slideWidth = window.innerWidth <= 768 ? 95 : 90;
-        const offset = window.innerWidth <= 768 ? 2.5 : 5;
+        // El ancho de slide coincide con el CSS (90% en desktop, 95% en mobile)
+        const slideWidthPercent = window.innerWidth <= 768 ? 95 : 90;
+        const offsetPercent = window.innerWidth <= 768 ? 2.5 : 5;
         
-        carouselTrack.style.transform = `translate3d(calc(${offset}% - ${index} * ${slideWidth}%), 0, 0)`;
+        carouselTrack.style.transform = `translate3d(calc(${offsetPercent}% - ${index} * ${slideWidthPercent}%), 0, 0)`;
 
-        // Actualizar Dots
+        // Actualizar puntos de navegación
         let dotIndex = index - 1;
-        if (index === 0) dotIndex = 2;
-        if (index === 4) dotIndex = 0;
+        if (index === 0) dotIndex = 2; // Clon de S3
+        if (index === 4) dotIndex = 0; // Clon de S1
         
         carouselDots.forEach(dot => dot.classList.remove('active'));
         if (carouselDots[dotIndex]) carouselDots[dotIndex].classList.add('active');
-        
         currentSlide = index;
     }
 
-    // Salto Invisible para Bucle Infinito
+    // Lógica para el bucle infinito sin saltos visuales
     if (carouselTrack) {
         carouselTrack.addEventListener('transitionend', () => {
             isTransitioning = false;
+            // Si llegamos a un clon, saltamos al original instantáneamente
             if (currentSlide === 0) showSlide(3, false);
             if (currentSlide === 4) showSlide(1, false);
         });
@@ -136,7 +139,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (carouselSlides.length > 0) {
         startCarousel();
-        // Flechas
+
+        // Control manual por Flechas
         const prevBtn = document.querySelector('.carousel-nav.prev');
         const nextBtn = document.querySelector('.carousel-nav.next');
 
@@ -154,6 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
             startCarousel();
         });
 
+        // Control por Puntos
         carouselDots.forEach((dot, i) => {
             dot.addEventListener('click', () => {
                 if (isTransitioning || i + 1 === currentSlide) return;
@@ -165,35 +170,48 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==================== 5. DRAG & TOUCH (1:1) ====================
-    let isDragging = false, startX = 0, dragDist = 0;
+    let isDragging = false, startX = 0, dragDistance = 0, startY = 0;
     const container = document.querySelector('.carousel-container');
 
     if (container) {
         const handleStart = (e) => {
             if (isTransitioning) return;
+            // Salto silencioso antes de empezar a arrastrar si estamos en clones
             if (currentSlide === 0) showSlide(3, false);
             if (currentSlide === 4) showSlide(1, false);
+            
             clearInterval(carouselInterval);
             isDragging = true;
             startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+            startY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
             container.classList.add('no-transition');
         };
 
         const handleMove = (e) => {
             if (!isDragging) return;
             const x = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-            dragDist = x - startX;
-            const slideWidth = window.innerWidth <= 768 ? 95 : 90;
-            const offset = window.innerWidth <= 768 ? 2.5 : 5;
-            carouselTrack.style.transform = `translate3d(calc(${offset}% - ${currentSlide} * ${slideWidth}% + ${dragDist}px), 0, 0)`;
+            const y = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+            dragDistance = x - startX;
+            
+            // Permitir scroll normal si el usuario mueve más hacia arriba que hacia los lados
+            if (Math.abs(dragDistance) > Math.abs(y - startY)) {
+                if (e.cancelable) e.preventDefault();
+            } else {
+                return; 
+            }
+
+            const slideWidthPercent = window.innerWidth <= 768 ? 95 : 90;
+            const offsetPercent = window.innerWidth <= 768 ? 2.5 : 5;
+            carouselTrack.style.transform = `translate3d(calc(${offsetPercent}% - ${currentSlide} * ${slideWidthPercent}% + ${dragDistance}px), 0, 0)`;
         };
 
         const handleEnd = () => {
             if (!isDragging) return;
             isDragging = false;
             container.classList.remove('no-transition');
-            if (Math.abs(dragDist) > 80) {
-                dragDist > 0 ? showSlide(currentSlide - 1) : showSlide(currentSlide + 1);
+            
+            if (Math.abs(dragDistance) > 80) { // Umbral de cambio
+                dragDistance > 0 ? showSlide(currentSlide - 1) : showSlide(currentSlide + 1);
             } else {
                 showSlide(currentSlide);
             }
@@ -203,11 +221,12 @@ document.addEventListener('DOMContentLoaded', () => {
         container.addEventListener('mousedown', handleStart);
         window.addEventListener('mousemove', handleMove);
         window.addEventListener('mouseup', handleEnd);
-        container.addEventListener('touchstart', handleStart, {passive: true});
-        container.addEventListener('touchmove', handleMove, {passive: true});
+        container.addEventListener('touchstart', handleStart, { passive: false });
+        container.addEventListener('touchmove', handleMove, { passive: false });
         container.addEventListener('touchend', handleEnd);
     }
 
+    // Re-ajustar posición al cambiar tamaño de ventana
     window.addEventListener('resize', () => showSlide(currentSlide, false));
 
     // ==================== 6. FORMULARIO Y COOKIES ====================
@@ -227,6 +246,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 mode: 'no-cors'
             }).then(() => {
                 window.location.href = 'gracias.html';
+            }).catch(() => {
+                alert('Error al enviar. Por favor intente de nuevo.');
             }).finally(() => {
                 submitBtn.innerText = 'Enviar Solicitud';
                 submitBtn.disabled = false;
