@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- Anti-flash: apply saved theme before first paint -->
-<script>
-    (function(){var t=localStorage.getItem('aae-theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
-</script>
 <head>
+    <!-- Anti-flash: aplica el tema guardado antes de que se dibuje la página -->
+    <script>
+        (function(){var t=localStorage.getItem('aae-theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AAE Systems</title>
@@ -14,20 +14,18 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Remix Icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 
-   <link rel="stylesheet" href="style.css">
-
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="shortcut icon" href="/favicon.ico">
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="shortcut icon" href="/favicon.ico">
 </head>
 
 <body>
@@ -44,9 +42,7 @@
             </div>
             <div class="menu-container">
                 <button class="hamburger-btn" id="menuToggle" aria-label="Abrir menú">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span></span><span></span><span></span>
                 </button>
                 <nav class="dropdown-menu" id="dropdownMenu">
                     <a href="/" class="menu-link"><i class="ri-home-4-line"></i> Inicio</a>
@@ -74,13 +70,13 @@
             <div class="carousel-mask-right"></div>
             
             <div class="carousel-track">
-                <!-- Slide 3 (Clon para Bucle Infinito) -->
+                <!-- Slide 3 (Clone para Bucle Infinito) -->
                 <div class="carousel-slide carousel-slide-3 clone">
                     <div class="hero-content">
                         <span class="badge">ESCALABILIDAD GARANTIZADA</span>
                         <h1 class="hero-title">Convierte tu Infraestructura en<br>una Máquina de Ventas</h1>
                         <div class="divider"></div>
-                        <p class="hero-subtitle">Automatizamos el embudo completo, desde el primer contacto hasta la fidelización.</p>
+                        <p class="hero-subtitle">Automatizamos el embudo completo para escalar sin que tus costos se disparen.</p>
                         <div class="hero-actions">
                             <a href="/contactanos/" class="btn-primary">Comenzar Transformación <i class="ri-arrow-right-line"></i></a>
                             <a href="/planes/" class="btn-secondary">Ver Planes</a>
@@ -94,7 +90,7 @@
                         <span class="badge">INFRAESTRUCTURA DE CRECIMIENTO B2B</span>
                         <h1 class="hero-title">Impulsa tu Ventaja Competitiva con<br>Ecosistemas de Automatización</h1>
                         <div class="divider"></div>
-                        <p class="hero-subtitle">Diseñamos y escalamos la infraestructura digital que transforma procesos complejos.</p>
+                        <p class="hero-subtitle">Diseñamos la infraestructura digital que transforma procesos en operaciones de alto rendimiento.</p>
                         <div class="hero-actions">
                             <a href="/contactanos/" class="btn-primary">Agendar Diagnóstico <i class="ri-arrow-right-line"></i></a>
                             <a href="/nuestros_servicios/" class="btn-secondary">Ver Cómo Funciona</a>
@@ -116,13 +112,13 @@
                     </div>
                 </div>
 
-                <!-- Slide 3: Quiénes Somos (Centrada y Optimizada) -->
+                <!-- Slide 3: Quiénes Somos (Original Centrada) -->
                 <div class="carousel-slide carousel-slide-3">
                     <div class="hero-content">
                         <span class="badge">ESCALABILIDAD GARANTIZADA</span>
                         <h1 class="hero-title">Convierte tu Infraestructura en<br>una Máquina de Ventas</h1>
                         <div class="divider"></div>
-                        <p class="hero-subtitle">Automatizamos el embudo completo, desde el primer contacto hasta la fidelización.</p>
+                        <p class="hero-subtitle">Automatizamos el embudo completo para escalar sin que tus costos se disparen.</p>
                         <div class="hero-actions">
                             <a href="/contactanos/" class="btn-primary">Comenzar Transformación <i class="ri-arrow-right-line"></i></a>
                             <a href="/planes/" class="btn-secondary">Ver Planes y Precios</a>
@@ -130,13 +126,13 @@
                     </div>
                 </div>
 
-                <!-- Slide 1 (Clon para Bucle Infinito) -->
+                <!-- Slide 1 (Clone para Bucle Infinito) -->
                 <div class="carousel-slide carousel-slide-1 clone">
                     <div class="hero-content">
                         <span class="badge">INFRAESTRUCTURA B2B</span>
                         <h1 class="hero-title">Impulsa tu Ventaja Competitiva con<br>Ecosistemas de Automatización</h1>
                         <div class="divider"></div>
-                        <p class="hero-subtitle">Diseñamos y escalamos la infraestructura digital.</p>
+                        <p class="hero-subtitle">Diseñamos la infraestructura digital.</p>
                         <div class="hero-actions">
                             <a href="/contactanos/" class="btn-primary">Agendar Diagnóstico <i class="ri-arrow-right-line"></i></a>
                         </div>
@@ -144,53 +140,43 @@
                 </div>
             </div>
 
-            <!-- Navegación y Controles -->
+            <!-- Navegación -->
             <button class="carousel-nav prev" aria-label="Anterior"><i class="ri-arrow-left-s-line"></i></button>
             <button class="carousel-nav next" aria-label="Siguiente"><i class="ri-arrow-right-s-line"></i></button>
             
             <div class="carousel-dots-container">
                 <div class="carousel-dots">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
+                    <div class="dot active"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
                 </div>
             </div>
         </div>
     </section>
 
     <main class="container">
-        <!-- El resto de las secciones (Methodology, Services, Stats, Contact) se mantienen igual -->
-        <!-- METHODOLOGY SECTION -->
+        <!-- El resto de las secciones se mantienen iguales -->
         <section class="methodology-section container">
             <div class="methodology-header">
                 <span class="label">Nuestra Metodología</span>
                 <h2>Ecosistema B2B de Alto Rendimiento</h2>
-                <p>Un proceso de tres fases diseñado para transformar tu infraestructura digital en un motor de
-                    crecimiento predecible.</p>
             </div>
             <div class="methodology-grid">
                 <div class="methodology-item">
                     <div class="method-icon"><i class="ri-search-eye-line"></i></div>
-                    <h3>01. Diagnóstico Estratégico</h3>
-                    <p>Analizamos tus procesos actuales para identificar cuellos de botella y oportunidades de
-                        automatización de alto impacto.</p>
+                    <h3>01. Diagnóstico</h3>
+                    <p>Analizamos procesos para identificar oportunidades de alto impacto.</p>
                 </div>
                 <div class="methodology-item">
                     <div class="method-icon"><i class="ri-ruler-2-line"></i></div>
-                    <h3>02. Arquitectura Digital</h3>
-                    <p>Diseñamos y construimos el ecosistema de herramientas e integraciones personalizadas que tu
-                        operación requiere.</p>
+                    <h3>02. Arquitectura</h3>
+                    <p>Diseñamos el ecosistema de herramientas personalizadas.</p>
                 </div>
                 <div class="methodology-item">
                     <div class="method-icon"><i class="ri-speed-up-line"></i></div>
-                    <h3>03. Escalamiento Autónomo</h3>
-                    <p>Implementamos los flujos finales que operan sin intervención manual, permitiendo un crecimiento
-                        exponencial y medible.</p>
+                    <h3>03. Escalamiento</h3>
+                    <p>Flujos que operan sin intervención manual.</p>
                 </div>
-            </div>
-            <div class="methodology-footer">
-                <a href="/quienes_somos/" class="btn-text-link">Descubrir enfoque estratégico completo <i
-                        class="ri-arrow-right-line"></i></a>
             </div>
         </section>
 
@@ -198,85 +184,36 @@
         <section id="services" class="services-section container">
             <div class="section-header">
                 <h2>Nuestros Servicios</h2>
-                <a href="/planes/" class="link-view-all">Ver planes y precios →</a>
+                <a href="/planes/" class="link-view-all">Ver planes →</a>
             </div>
             <div class="services-grid">
                 <div class="service-card service-card-web">
                     <div class="card-image-container"></div>
                     <div class="card-text-container">
-                        <h3 class="card-title">Ingeniería Web de Alta Conversión</h3>
-                        <p class="card-description">Arquitecturas digitales optimizadas para la captación de leads.</p>
+                        <h3 class="card-title">Ingeniería Web</h3>
+                        <p class="card-description">Arquitecturas para captación de leads.</p>
                     </div>
                 </div>
-                <!-- ... resto de las cards ... -->
                 <div class="service-card service-card-auto">
                     <div class="card-image-container"></div>
                     <div class="card-text-container">
-                        <h3 class="card-title">Automatización de Operaciones Core</h3>
-                        <p class="card-description">Sincronización de flujos de trabajo críticos.</p>
-                    </div>
-                </div>
-                <div class="service-card service-card-social">
-                    <div class="card-image-container"><div class="card-icon"><i class="ri-share-forward-line"></i></div></div>
-                    <div class="card-text-container">
-                        <h3 class="card-title">Omnicanalidad Automatizada</h3>
-                        <p class="card-description">Estrategias de captura y seguimiento en redes sociales.</p>
-                    </div>
-                </div>
-                <div class="service-card service-card-email">
-                    <div class="card-image-container"><div class="card-icon"><i class="ri-mail-send-line"></i></div></div>
-                    <div class="card-text-container">
-                        <h3 class="card-title">Retención y Nutrición Dinámica</h3>
-                        <p class="card-description">Sistemas de CRM y Email Marketing con diseño avanzado.</p>
-                    </div>
-                </div>
-                <div class="service-card service-card-database">
-                    <div class="card-image-container"><div class="card-icon"><i class="ri-pie-chart-line"></i></div></div>
-                    <div class="card-text-container">
-                        <h3 class="card-title">Inteligencia de Datos & Lead Scoring</h3>
-                        <p class="card-description">Estructuramos y clasificamos tu información.</p>
-                    </div>
-                </div>
-                <div class="service-card service-card-software">
-                    <div class="card-image-container"><div class="card-icon"><i class="ri-code-s-slash-line"></i></div></div>
-                    <div class="card-text-container">
-                        <h3 class="card-title">Ecosistemas de Software con IA</h3>
-                        <p class="card-description">Soluciones escalables diseñadas sobre medida.</p>
+                        <h3 class="card-title">Automatización Core</h3>
+                        <p class="card-description">Sincronización de flujos críticos.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- STATS SECTION -->
-        <section id="stats" class="stats-section premium-stats">
-            <!-- (Contenido de stats se mantiene igual) -->
-            <div class="stats-bg-decoration"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
-            <div class="stats-content container">
-                <h3>Impacto Tangible</h3>
-                <div class="stats-grid">
-                    <div class="stat-card"><div class="stat-number">6</div><div class="stat-label">Capas de automatización</div></div>
-                    <div class="stat-card"><div class="stat-number">24/7</div><div class="stat-label">Disponibilidad absoluta</div></div>
-                    <div class="stat-card"><div class="stat-number">ROI+</div><div class="stat-label">Recuperación de inversión</div></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACT SECTION -->
+        <!-- CONTACT -->
         <section id="contacto" class="contact-section">
-            <!-- (Contenido de contacto se mantiene igual) -->
             <div class="contact-container">
                 <div class="contact-form-wrapper">
                     <h3>¿Listo para automatizar?</h3>
                     <form class="contact-form" id="contactForm">
-                        <div class="form-group"><label>Nombre Completo</label><input type="text" id="name" required></div>
                         <div class="form-group"><label>E-mail Corporativo</label><input type="email" id="email" required></div>
-                        <div class="form-group"><label>Sobre tu proyecto</label><textarea id="message" rows="4" required></textarea></div>
+                        <div class="form-group"><label>Mensaje</label><textarea id="message" rows="4" required></textarea></div>
                         <button type="submit" id="submitBtn">Enviar Solicitud</button>
                     </form>
-                </div>
-                <div class="contact-sidebar">
-                    <div class="sidebar-item"><i class="ri-flashlight-line"></i><h4>Respuesta en &lt;24h</h4></div>
-                    <div class="sidebar-item"><i class="ri-shield-star-line"></i><h4>Enfoque Proactivo</h4></div>
                 </div>
             </div>
         </section>
@@ -284,11 +221,11 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <!-- (Contenido de footer se mantiene igual) -->
         <div class="footer-content">
-            <div class="footer-logo"><a href="/" class="logo-text logo-white"><span class="logo-main">AAE</span><span class="logo-sub">Systems</span></a></div>
-            <p class="footer-slogan">GROWTH AUTOMATION · WEB · REDES · EMAIL · SOFTWARE</p>
-            <div class="footer-links"><a href="/">Inicio</a><a href="/quienes_somos/">Quienes somos</a><a href="/planes/">Planes</a><a href="/contactanos/">Contáctanos</a></div>
+            <div class="footer-logo">
+                <a href="/" class="logo-text logo-white"><span class="logo-main">AAE</span><span class="logo-sub">Systems</span></a>
+            </div>
+            <p class="footer-slogan">GROWTH AUTOMATION · WEB · REDES · EMAIL</p>
             <p class="copyright">© 2026 AAE Systems. Todos los derechos reservados.</p>
         </div>
     </footer>
@@ -296,11 +233,11 @@
     <!-- Cookie Banner -->
     <div id="cookie-banner" class="cookie-banner">
         <div class="cookie-content">
-            <p>Utilizamos cookies para optimizar tu experiencia.</p>
+            <p>Utilizamos cookies para mejorar tu experiencia.</p>
             <div class="cookie-buttons"><button id="accept-cookies" class="btn-accept">Aceptar</button></div>
         </div>
     </div>
 
-    <script src="script.js?v=1.4"></script>
+    <script src="script.js?v=1.5"></script>
 </body>
 </html>
