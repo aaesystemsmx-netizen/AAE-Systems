@@ -162,4 +162,27 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // --- Cookie Banner Logic ---
+    const cookieBanner = document.getElementById('cookie-banner');
+    const acceptBtn = document.getElementById('accept-cookies');
+    const rejectBtn = document.getElementById('reject-cookies');
+
+    if (cookieBanner && acceptBtn && rejectBtn) {
+        const consent = localStorage.getItem('aae-cookie-consent');
+        if (!consent) {
+            // Se muestra con un retraso de 2 segundos para mejor UX
+            setTimeout(() => {
+                cookieBanner.classList.add('show');
+            }, 2000);
+        }
+        acceptBtn.addEventListener('click', () => {
+            localStorage.setItem('aae-cookie-consent', 'accepted');
+            cookieBanner.classList.remove('show');
+        });
+        rejectBtn.addEventListener('click', () => {
+            localStorage.setItem('aae-cookie-consent', 'rejected');
+            cookieBanner.classList.remove('show');
+        });
+    }
 });
