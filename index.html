@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
-
+<!-- Anti-flash: apply saved theme before first paint -->
+<script>
+    (function(){var t=localStorage.getItem('aae-theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+</script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,6 +55,10 @@
                     <a href="/nuestros_servicios/" class="menu-link"><i class="ri-service-line"></i> Nuestros Servicios</a>
                     <a href="/politicas_de_privacidad/" class="menu-link"><i class="ri-shield-check-line"></i> Políticas</a>
                     <a href="/contactanos/" class="menu-link"><i class="ri-mail-send-line"></i> Contáctanos</a>
+                    <button class="menu-theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+                        <span class="toggle-label"><i class="ri-contrast-2-line"></i> Modo Oscuro</span>
+                        <span class="toggle-pill"></span>
+                    </button>
                 </nav>
             </div>
         </div>
