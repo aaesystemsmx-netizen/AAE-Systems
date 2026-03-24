@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
-
+<script>
+    (function(){var t=localStorage.getItem('aae-theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+</script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,11 +21,12 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+    
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="shortcut icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="shortcut icon" href="/favicon.ico">
 
     <style>
         /* ─────────── Quiénes Somos — Page Styles ─────────── */
@@ -314,6 +317,40 @@
             line-height: 1.5;
         }
 
+        /* ── Dark Mode Overrides ── */
+        [data-theme="dark"] .about-intro h2,
+        [data-theme="dark"] .about-split-text h3,
+        [data-theme="dark"] .founder-name,
+        [data-theme="dark"] .founder-bio p strong,
+        [data-theme="dark"] .about-stat-num {
+            color: #f5f5f7 !important;
+        }
+
+        [data-theme="dark"] .about-check-list li {
+            border-bottom-color: rgba(255, 255, 255, 0.1);
+            color: #a1a1a6;
+        }
+
+        [data-theme="dark"] .about-check-list .dot {
+            background: var(--color-accent);
+        }
+
+        [data-theme="dark"] .about-stat {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="dark"] .about-stat:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        [data-theme="dark"] .founder-quote {
+            border-left-color: var(--color-accent);
+        }
+
+        [data-theme="dark"] .founder-quote p {
+            color: #f5f5f7;
+        }
+
         /* ── Responsive ── */
         @media (max-width: 1024px) {
             .values-row {
@@ -392,12 +429,16 @@
                     <span></span>
                 </button>
                 <nav class="dropdown-menu" id="dropdownMenu">
-                    <a href="/" class="menu-link">Inicio</a>
-                    <a href="/quienes_somos/" class="menu-link">Quienes somos</a>
-                    <a href="/planes/" class="menu-link">Planes</a>
-                    <a href="/nuestros_servicios/" class="menu-link">Nuestros Servicios</a>
-                    <a href="/politicas_de_privacidad/" class="menu-link">Políticas</a>
-                    <a href="/contactanos/" class="menu-link">Contáctanos</a>
+                    <a href="/" class="menu-link"><i class="ri-home-4-line"></i> Inicio</a>
+                    <a href="/about.html" class="menu-link"><i class="ri-group-line"></i> Quienes somos</a>
+                    <a href="/planes.html" class="menu-link"><i class="ri-price-tag-3-line"></i> Planes</a>
+                    <a href="/beneficios.html" class="menu-link"><i class="ri-service-line"></i> Nuestros Servicios</a>
+                    <a href="/politicas.html" class="menu-link"><i class="ri-shield-check-line"></i> Políticas</a>
+                    <a href="/contacto.html" class="menu-link"><i class="ri-mail-send-line"></i> Contáctanos</a>
+                    <button class="menu-theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+                        <span class="toggle-label"><i class="ri-contrast-2-line"></i> Modo Oscuro</span>
+                        <span class="toggle-pill"></span>
+                    </button>
                 </nav>
             </div>
         </div>
@@ -422,7 +463,7 @@
         <section class="about-intro">
             <h2>Nuestra Historia</h2>
             <p>
-                AAE Systems es una agencia especializada en <strong style="color: var(--color-black);">Growth
+                AAE Systems es una agencia especializada en <strong style="color: var(--color-accent);">Growth
                     Automation</strong> para empresas B2B.
                 Nacimos con un propósito claro: diseñar, construir y optimizar la infraestructura digital que permite a
                 los negocios escalar su captación y conversión de clientes de manera automatizada, predecible y
@@ -577,7 +618,7 @@
                     digital inteligente.
                 </p>
                 <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                    <a href="/contactanos/" class="btn-primary"
+                    <a href="/contacto.html" class="btn-primary"
                         style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">
                         Agendar Diagnóstico Gratuito
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -585,7 +626,7 @@
                             <path d="M5 12h14M12 5l7 7-7 7" />
                         </svg>
                     </a>
-                    <a href="/nuestros_servicios/" class="btn-secondary"
+                    <a href="/beneficios.html" class="btn-secondary"
                         style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; color: var(--color-black); border-color: var(--color-black);">
                         Ver Nuestros Servicios
                     </a>
@@ -609,11 +650,11 @@
 
             <div class="footer-links">
                 <a href="/">Inicio</a>
-                <a href="/quienes_somos/">Quienes somos</a>
-                <a href="/planes/">Planes</a>
-                <a href="/nuestros_servicios/">Nuestros Servicios</a>
-                <a href="/politicas_de_privacidad/">Políticas</a>
-                <a href="/contactanos/">Contáctanos</a>
+                <a href="/about.html">Quienes somos</a>
+                <a href="/planes.html">Planes</a>
+                <a href="/beneficios.html">Nuestros Servicios</a>
+                <a href="/politicas.html">Políticas</a>
+                <a href="/contacto.html">Contáctanos</a>
             </div>
 
             <div class="footer-social">
@@ -629,18 +670,19 @@
         </div>
     </footer>
 
-       <div id="cookie-banner" class="cookie-banner">
-    <div class="cookie-content">
-        <p>
-            En AAE Systems utilizamos cookies para mejorar tu experiencia, analizar el tráfico y optimizar nuestros servicios.
-            Puedes aceptar todas o gestionar tus preferencias.
-        </p>
+    <!-- Cookie Banner -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <p>
+                En AAE Systems utilizamos cookies para mejorar tu experiencia, analizar el tráfico y optimizar nuestros servicios.
+                Puedes aceptar todas o gestionar tus preferencias.
+            </p>
+        </div>
         <div class="cookie-buttons">
             <button id="accept-cookies" class="btn-accept">Aceptar</button>
             <button id="reject-cookies" class="btn-reject">Rechazar</button>
         </div>
     </div>
-</div>
 
     <script src="script.js?v=1.3"></script>
 </body>
