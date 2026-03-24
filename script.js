@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
                 .then(() => {
                     contactForm.reset();
-                    window.location.href = 'gracias.html';
+                    window.location.href = '/solicitud_enviada_correctamente/';
                 })
                 .catch(error => {
                     console.error('Error:', error);
